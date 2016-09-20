@@ -1,2 +1,2 @@
 # todo-react-components
-React components for advanced ToDo App
+React components for advanced Todo App
