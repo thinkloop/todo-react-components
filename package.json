@@ -15,12 +15,12 @@
     "watch:html:do": "cat $npm_package_config_demo_html_entry_file > $npm_package_config_demo_build_folder/index.html && echo ---------HTML-----------`date +%r`",
     "**********": "",
     "build:all": "npm run -s clean:build && npm run -s build:js",
-    "build:js": "npm run -s build:js:browserify | npm run -s partial:uglify -- > $npm_package_config_build_folder/todo-react-components.js && echo ---------JS-------------`date +%r`",
+    "build:js": "npm run -s build:js:browserify | npm run -s partial:uglify -- --mangle > $npm_package_config_build_folder/todo-react-components.js && echo ---------JS-------------`date +%r`",
     "build:js:browserify": "browserify $npm_package_config_build_entry_file --extension=.js --extension=.jsx --detectGlobals false --standalone todo-react-components -t [ babelify --presets [ es2015 stage-0 react ] ]",
     "***********": "",
     "clean:build": "rimraf $npm_package_config_build_folder/* && mkdir -p $npm_package_config_build_folder && echo ---------CLEAN BUILD----------",
     "clean:demo": "rimraf $npm_package_config_demo_build_folder/* && mkdir -p $npm_package_config_demo_build_folder && echo ---------CLEAN DEMO----------",
-    "partial:uglify": "[ $NODE_ENV != production ] && cat || uglifyjs --compress drop_console,unused=true --screw-ie8 --mangle"
+    "partial:uglify": "[ $NODE_ENV != production ] && cat || uglifyjs --compress drop_console,unused=true --screw-ie8"
   },
   "repository": {
     "type": "git",
@@ -58,7 +58,7 @@
   },
   "config": {
     "build_folder": "./build",
-    "build_entry_file": "./src/app.jsx",
+    "build_entry_file": "./src/components.js",
     "demo_js_entry_file": "./demo/index.js",
     "demo_html_entry_file": "./demo/index.html",
     "demo_build_folder": "./build_demo"
