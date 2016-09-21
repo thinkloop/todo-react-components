@@ -6,8 +6,8 @@
   "scripts": {
     "************": "",
     "start": "augur-ui-webserver -d $npm_package_config_demo_build_folder",
-    "watch": "clear; echo \"* NPM UPDATE *\"; npm update; echo \"* CLEAN * HTML * WATCHIFY *\"; NODE_ENV=development npm run -s watch:all",
-    "build": "clear; echo \"* NPM UPDATE *\"; npm update; echo \"* * * *  BUILD  * * * *\"; NODE_ENV=development npm run -s build:all",
+    "watch": "clear; echo '* NPM UPDATE *'; npm update; echo '* CLEAN * HTML * WATCHIFY *'; NODE_ENV=development npm run -s watch:all",
+    "build": "clear; echo '* NPM UPDATE *'; npm update; echo '* * * *  * BUILD  * * * * *'; NODE_ENV=development npm run -s build:all",
     "***********": "",
     "watch:all": "npm run -s clean:demo && (npm run -s watch:js & npm run -s watch:html)",
     "watch:js": "watchify $npm_package_config_demo_js_entry_file --extension=.js --extension=.jsx -t [ babelify ] --debug -o 'exorcist $npm_package_config_demo_build_folder/build.js.map > $npm_package_config_demo_build_folder/build.js && echo ---------WATCHIFY--------`date +%r`'",
@@ -18,6 +18,7 @@
     "build:js": "npm run -s build:js:browserify | npm run -s partial:uglify > $npm_package_config_build_folder/todo-react-components.js && echo ---------JS-------------`date +%r`",
     "build:js:browserify": "browserify $npm_package_config_build_entry_file --extension=.js --extension=.jsx --detectGlobals false --standalone todo-react-components -t [ babelify ] | derequire",
     "build:finish": "echo ---------FINISHED-------`date +%r`",
+    "*********": "",
     "clean:build": "rimraf $npm_package_config_build_folder/* && mkdir -p $npm_package_config_build_folder && echo ---------CLEAN BUILD----------",
     "clean:demo": "rimraf $npm_package_config_demo_build_folder/* && mkdir -p $npm_package_config_demo_build_folder && echo ---------CLEAN DEMO----------",
     "partial:uglify": "[ $NODE_ENV = production ] && uglifyjs --compress drop_console,unused=true --mangle --screw-ie8 || cat"
