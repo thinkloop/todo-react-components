@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 
-export default class TodoNew extends Component {
+export default class TodosNewForm extends Component {
 	static propTypes = {
+		className: React.PropTypes.string,
 		onSubmit: React.PropTypes.func
 	};
 
@@ -17,10 +19,11 @@ export default class TodoNew extends Component {
 	}
 
 	render() {
+		const p = this.props;
 		const s = this.state;
 		return (
-			<form className="new-todo-form" onSubmit={ this.handleOnSubmit }>
-				<input className="new-todo-input" value={ s.value } placeholder="What needs to be done?" onChange={ this.handleOnChange } />
+			<form className={ classnames('todos-new-form', p.className) } onSubmit={ this.handleOnSubmit }>
+				<input className="todos-new-form-input" value={ s.value } placeholder="What needs to be done?" onChange={ this.handleOnChange } />
 			</form>
 		);
 	}

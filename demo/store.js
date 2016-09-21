@@ -3,10 +3,8 @@ import thunk from 'redux-thunk';
 
 // reducers
 import todos from './todos/reducers/todos';
-import onNewTodoFormSubmit from './todos/reducers/on-new-todo-form-submit';
 const reducers = {
-	todos,
-	onNewTodoFormSubmit
+	todos
 };
 
 // console log middleware

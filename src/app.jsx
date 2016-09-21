@@ -1,14 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import TodoPage from './todo/todo-page';
+import TodosPage from './todos/todos-page';
 
 export default function (appElement, data) {
-	let page = <TodoPage
-		className="todo-page"
-		todos={ data.todos }
-		todoSummary={ data.todoSummary }
-		onNewTodoFormSubmit={ data.onNewTodoFormSubmit }
+	let page;
+
+	page = <TodosPage
+		className="todos-page"
+		{ ...data.todos }
 	/>;
 
 	render(page, appElement);

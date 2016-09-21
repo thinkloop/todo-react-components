@@ -8,7 +8,7 @@
     "start": "augur-ui-webserver -d $npm_package_config_demo_build_folder",
     "watch": "clear; echo \"* NPM UPDATE *\"; npm update; echo \"* CLEAN * HTML * WATCHIFY *\"; NODE_ENV=development; npm run -s watch:all",
     "build": "clear; echo \"* NPM UPDATE *\"; npm update; echo \"* * * *  BUILD  * * * *\"; NODE_ENV=production npm run -s build:all",
-    "_________": "",
+    "************": "",
     "watch:all": "npm run -s clean:demo && (npm run -s watch:js & npm run -s watch:html)",
     "watch:js": "watchify $npm_package_config_demo_js_entry_file --extension=.js --extension=.jsx -t [ babelify --presets [ es2015 stage-0 react ] ] --debug -o 'exorcist $npm_package_config_demo_build_folder/build.js.map > $npm_package_config_demo_build_folder/build.js && echo ---------WATCHIFY--------`date +%r`'",
     "watch:html": "onchange $npm_package_config_demo_html_entry_file -i -- npm run -s watch:html:do",
@@ -39,7 +39,7 @@
     "browserify": "13.1.0",
     "classnames": "2.2.5",
     "exorcist": "^0.4.0",
-    "httpwebserver": "1.0.0",
+    "npm-check-updates": "^2.8.0",
     "onchange": "^3.0.2",
     "react": "15.3.2",
     "react-dom": "15.3.2",
@@ -49,8 +49,8 @@
     "watchify": "^3.7.0"
   },
   "config": {
-    "demo_build_folder": "./build_demo",
     "demo_js_entry_file": "./demo/index.js",
-    "demo_html_entry_file": "./demo/index.html"
+    "demo_html_entry_file": "./demo/index.html",
+    "demo_build_folder": "./build_demo"
   }
 }
