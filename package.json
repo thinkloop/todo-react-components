@@ -10,17 +10,17 @@
     "build": "clear; echo \"* NPM UPDATE *\"; npm update; echo \"* * * *  BUILD  * * * *\"; NODE_ENV=development npm run -s build:all",
     "***********": "",
     "watch:all": "npm run -s clean:demo && (npm run -s watch:js & npm run -s watch:html)",
-    "watch:js": "watchify $npm_package_config_demo_js_entry_file --extension=.js --extension=.jsx -t [ babelify --presets [ es2015 stage-0 react ] ] --debug -o 'exorcist $npm_package_config_demo_build_folder/build.js.map > $npm_package_config_demo_build_folder/build.js && echo ---------WATCHIFY--------`date +%r`'",
+    "watch:js": "watchify $npm_package_config_demo_js_entry_file --extension=.js --extension=.jsx -t [ babelify ] --debug -o 'exorcist $npm_package_config_demo_build_folder/build.js.map > $npm_package_config_demo_build_folder/build.js && echo ---------WATCHIFY--------`date +%r`'",
     "watch:html": "onchange $npm_package_config_demo_html_entry_file -i -- npm run -s watch:html:do",
     "watch:html:do": "cat $npm_package_config_demo_html_entry_file > $npm_package_config_demo_build_folder/index.html && echo ---------HTML-----------`date +%r`",
     "**********": "",
-    "build:all": "npm run -s clean:build && npm run -s build:js",
-    "build:js": "npm run -s build:js:browserify | npm run -s partial:uglify -- > $npm_package_config_build_folder/todo-react-components.js && echo ---------JS-------------`date +%r`",
-    "build:js:browserify": "browserify $npm_package_config_build_entry_file --extension=.js --extension=.jsx --detectGlobals false --standalone todo-react-components -t [ babelify --presets [ es2015 stage-0 react ] ]",
-    "***********": "",
+    "build:all": "npm run -s clean:build && npm run -s build:js && npm run -s build:finish",
+    "build:js": "npm run -s build:js:browserify | npm run -s partial:uglify > $npm_package_config_build_folder/todo-react-components.js && echo ---------JS-------------`date +%r`",
+    "build:js:browserify": "browserify $npm_package_config_build_entry_file --extension=.js --extension=.jsx --detectGlobals false --standalone todo-react-components -t [ babelify ] | derequire",
+    "build:finish": "echo ---------FINISHED-------`date +%r`",
     "clean:build": "rimraf $npm_package_config_build_folder/* && mkdir -p $npm_package_config_build_folder && echo ---------CLEAN BUILD----------",
     "clean:demo": "rimraf $npm_package_config_demo_build_folder/* && mkdir -p $npm_package_config_demo_build_folder && echo ---------CLEAN DEMO----------",
-    "partial:uglify": "[ $NODE_ENV != production ] && cat || uglifyjs --compress drop_console,unused=true --screw-ie8 --mangle"
+    "partial:uglify": "[ $NODE_ENV = production ] && uglifyjs --compress drop_console,unused=true --mangle --screw-ie8 || cat"
   },
   "repository": {
     "type": "git",
@@ -49,6 +49,7 @@
     "babel-preset-stage-0": "6.5.0",
     "babelify": "^7.3.0",
     "browserify": "13.1.0",
+    "derequire": "^2.0.3",
     "exorcist": "^0.4.0",
     "npm-check-updates": "^2.8.0",
     "onchange": "^3.0.2",
@@ -60,7 +61,7 @@
   },
   "config": {
     "build_folder": "./build",
-    "build_entry_file": "./src/components.js",
+    "build_entry_file": "./src/app.jsx",
     "demo_js_entry_file": "./demo/index.js",
     "demo_html_entry_file": "./demo/index.html",
     "demo_build_folder": "./build_demo"
