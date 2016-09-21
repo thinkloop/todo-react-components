@@ -2,17 +2,23 @@
   "name": "todo-react-components",
   "version": "1.0.0",
   "description": "React components for advanced Todo App",
-  "main": "index.js",
+  "main": "./build/todo-react-components.js",
   "scripts": {
     "************": "",
     "start": "augur-ui-webserver -d $npm_package_config_demo_build_folder",
     "watch": "clear; echo \"* NPM UPDATE *\"; npm update; echo \"* CLEAN * HTML * WATCHIFY *\"; NODE_ENV=development; npm run -s watch:all",
     "build": "clear; echo \"* NPM UPDATE *\"; npm update; echo \"* * * *  BUILD  * * * *\"; NODE_ENV=production npm run -s build:all",
     "************": "",
+    "build:all": "npm run -s clean:build && npm run -s build:js",
+    "build:js": "npm run -s build:js:browserify | npm run -s partial:uglify -- --mangle > $npm_package_config_build_folder/todo-react-components.js && echo ---------JS-------------`date +%r`",
+    "build:js:browserify": "browserify $npm_package_config_entry_file --extension=.js --extension=.jsx --detectGlobals false --standalone todo-react-components -t [ babelify ]",
+    "***********": "",
     "watch:all": "npm run -s clean:demo && (npm run -s watch:js & npm run -s watch:html)",
     "watch:js": "watchify $npm_package_config_demo_js_entry_file --extension=.js --extension=.jsx -t [ babelify --presets [ es2015 stage-0 react ] ] --debug -o 'exorcist $npm_package_config_demo_build_folder/build.js.map > $npm_package_config_demo_build_folder/build.js && echo ---------WATCHIFY--------`date +%r`'",
     "watch:html": "onchange $npm_package_config_demo_html_entry_file -i -- npm run -s watch:html:do",
     "watch:html:do": "cat $npm_package_config_demo_html_entry_file > $npm_package_config_demo_build_folder/index.html && echo ---------HTML-----------`date +%r`",
+    "**********": "",
+    "clean:build": "rimraf $npm_package_config_build_folder/* && mkdir -p $npm_package_config_build_folder && echo ---------CLEAN----------",
     "clean:demo": "rimraf $npm_package_config_demo_build_folder/* && mkdir -p $npm_package_config_demo_build_folder && echo ---------CLEAN----------"
   },
   "repository": {
@@ -49,6 +55,8 @@
     "watchify": "^3.7.0"
   },
   "config": {
+    "build_folder": "./build",
+
     "demo_js_entry_file": "./demo/index.js",
     "demo_html_entry_file": "./demo/index.html",
     "demo_build_folder": "./build_demo"
