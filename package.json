@@ -8,7 +8,6 @@
     "start": "augur-ui-webserver -d $npm_package_config_demo_build_folder",
     "watch": "clear; echo \"* NPM UPDATE *\"; npm update; echo \"* CLEAN * HTML * WATCHIFY *\"; NODE_ENV=development; npm run -s watch:all",
     "build": "clear; echo \"* NPM UPDATE *\"; npm update; echo \"* * * *  BUILD  * * * *\"; NODE_ENV=production npm run -s build:all",
-    "************": "",
     "build:all": "npm run -s clean:build && npm run -s build:js",
     "build:js": "npm run -s build:js:browserify | npm run -s partial:uglify -- --mangle > $npm_package_config_build_folder/todo-react-components.js && echo ---------JS-------------`date +%r`",
     "build:js:browserify": "browserify $npm_package_config_entry_file --extension=.js --extension=.jsx --detectGlobals false --standalone todo-react-components -t [ babelify ]",
@@ -18,8 +17,9 @@
     "watch:html": "onchange $npm_package_config_demo_html_entry_file -i -- npm run -s watch:html:do",
     "watch:html:do": "cat $npm_package_config_demo_html_entry_file > $npm_package_config_demo_build_folder/index.html && echo ---------HTML-----------`date +%r`",
     "**********": "",
-    "clean:build": "rimraf $npm_package_config_build_folder/* && mkdir -p $npm_package_config_build_folder && echo ---------CLEAN----------",
-    "clean:demo": "rimraf $npm_package_config_demo_build_folder/* && mkdir -p $npm_package_config_demo_build_folder && echo ---------CLEAN----------"
+    "clean:build": "rimraf $npm_package_config_build_folder/* && mkdir -p $npm_package_config_build_folder && echo ---------CLEAN BUILD----------",
+    "clean:demo": "rimraf $npm_package_config_demo_build_folder/* && mkdir -p $npm_package_config_demo_build_folder && echo ---------CLEAN DEMO----------",
+    "partial:uglify": "[ $NODE_ENV != production ] && cat || uglifyjs --compress drop_console,unused=true --screw-ie8"
   },
   "repository": {
     "type": "git",
@@ -52,11 +52,11 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "rimraf": "^2.5.4",
+    "uglifyjs": "^2.4.10",
     "watchify": "^3.7.0"
   },
   "config": {
     "build_folder": "./build",
-
     "demo_js_entry_file": "./demo/index.js",
     "demo_html_entry_file": "./demo/index.html",
     "demo_build_folder": "./build_demo"
