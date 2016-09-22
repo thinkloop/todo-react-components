@@ -7,7 +7,7 @@
     "************": "",
     "start": "augur-ui-webserver -d $npm_package_config_demo_build_folder",
     "watch": "clear; echo '* NPM UPDATE *'; npm update; echo '* CLEAN * HTML * WATCHIFY *'; NODE_ENV=development npm run -s watch:all",
-    "build": "clear; echo '* NPM UPDATE *'; npm update; echo '* * * *  * BUILD  * * * * *'; NODE_ENV=development npm run -s build:all",
+    "build": "clear; echo '* NPM UPDATE *'; npm update; echo '* * * *  * BUILD  * * * * *'; NODE_ENV=production npm run -s build:all",
     "***********": "",
     "watch:all": "npm run -s clean:demo && (npm run -s watch:js & npm run -s watch:html)",
     "watch:js": "watchify $npm_package_config_demo_js_entry_file --extension=.js --extension=.jsx -t [ babelify ] --debug -o 'exorcist $npm_package_config_demo_build_folder/build.js.map > $npm_package_config_demo_build_folder/build.js && echo ---------WATCHIFY--------`date +%r`'",
