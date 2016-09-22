@@ -1698,10 +1698,10 @@ var TodoItem = function TodoItem(p) {
 	return _react2.default.createElement(
 		'article',
 		{ className: (0, _classnames2.default)('list-item', { 'checked': p.isComplete }, p.className) },
-		_react2.default.createElement('input', { className: 'checkbox', type: 'checkbox', checked: p.isComplete, onChange: p.onCheckboxToggled }),
 		_react2.default.createElement(
-			'span',
+			'label',
 			{ className: 'description' },
+			_react2.default.createElement('input', { className: 'checkbox', type: 'checkbox', checked: p.isComplete, onChange: p.onCheckboxToggled }),
 			p.description
 		),
 		_react2.default.createElement(

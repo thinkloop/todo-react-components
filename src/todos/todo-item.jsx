@@ -3,8 +3,11 @@ import classnames from 'classnames';
 
 const TodoItem = (p) => (
 	<article className={ classnames('list-item', { 'checked': p.isComplete }, p.className) }>
-		<input className="checkbox" type="checkbox" checked={ p.isComplete } onChange={ p.onCheckboxToggled } />
-		<span className="description">{ p.description }</span>
+		<label className="description">
+			<input className="checkbox" type="checkbox" checked={ p.isComplete } onChange={ p.onCheckboxToggled } />
+			{ p.description }
+		</label>
+
 		<button className="button" onClick={ p.onButtonClicked }>
 			{ p.buttonLabel }
 		</button>
