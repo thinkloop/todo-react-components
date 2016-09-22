@@ -44,8 +44,8 @@ export default function (todos = defaultState, action) {
 
 	case ON_SUMMARY_STATUS_SELECTED:
 		newTodos = { ...todos };
-		newTodos.list = newTodos.list.filter(todo => action.selected === TOTAL || (todo.isComplete && action.selected === COMPLETE)  || (!todo.isComplete && action.selected === PENDING));
-		newTodos.summary = makeSummary(newTodos.list, action.selected);
+		newTodos.list = newTodos.list.filter(todo => action.selectedSummaryStatus === TOTAL || (todo.isComplete && action.selectedSummaryStatus === COMPLETE)  || (!todo.isComplete && action.selectedSummaryStatus === PENDING));
+		newTodos.summary = makeSummary(newTodos.list, action.selectedSummaryStatus);
 
 		return newTodos;
 
@@ -68,7 +68,7 @@ function addTodoToList(list, action) {
 	return list;
 }
 
-function makeSummary(list, selected) {
+function makeSummary(list, selectedSummaryStatus) {
 	const newSummary = list.reduce((p, item) => {
 		p.countTotal++;
 		item.isComplete && p.countComplete++;
@@ -84,11 +84,11 @@ function makeSummary(list, selected) {
 	newSummary.countComplete = `${newSummary.countComplete} complete`;
 	newSummary.countIncomplete = `${newSummary.countIncomplete} remaining`;
 
-	newSummary.selected = selected;
+	newSummary.selectedSummaryStatus = selectedSummaryStatus;
 
-	newSummary.onClickPending = () => store.dispatch({ type: ON_SUMMARY_STATUS_SELECTED, selected: PENDING });
-	newSummary.onClickComplete = () => store.dispatch({ type: ON_SUMMARY_STATUS_SELECTED, selected: COMPLETE });
-	newSummary.onClickTotal = () => store.dispatch({ type: ON_SUMMARY_STATUS_SELECTED, selected: TOTAL });
+	newSummary.onClickPending = () => store.dispatch({ type: ON_SUMMARY_STATUS_SELECTED, selectedSummaryStatus: PENDING });
+	newSummary.onClickComplete = () => store.dispatch({ type: ON_SUMMARY_STATUS_SELECTED, selectedSummaryStatus: COMPLETE });
+	newSummary.onClickTotal = () => store.dispatch({ type: ON_SUMMARY_STATUS_SELECTED, selectedSummaryStatus: TOTAL });
 
 	return newSummary;
 }

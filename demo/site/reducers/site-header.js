@@ -1,20 +1,20 @@
-const ON_CLICK_NAV = 'ON_CLICK_NAV';
+export const ON_CLICK_NAV = 'ON_CLICK_NAV';
 
 import store from '../../store';
 
-import { HOME_HREF, ABOUT_HREF } from '../../../src/site/constants/pages';
+import { HOME, ABOUT } from '../../../src/site/constants/pages';
 
 const defaultState = {
 	labelHome: 'Todo App',
 	labelAbout: 'About',
 
-	hrefHome: HOME_HREF,
-	hrefAbout: ABOUT_HREF,
+	hrefHome: '/',
+	hrefAbout: '/about',
 
-	selected: '/',
+	selectedPage: '/',
 
-	onClickHome: () => store.dispatch({ type: ON_CLICK_NAV, selected: HOME_HREF }),
-	onClickAbout: () => store.dispatch({ type: ON_CLICK_NAV, selected: ABOUT_HREF })
+	onClickHome: () => store.dispatch({ type: ON_CLICK_NAV, selectedPage: HOME }),
+	onClickAbout: () => store.dispatch({ type: ON_CLICK_NAV, selectedPage: ABOUT })
 };
 
 export default function (siteHeader = defaultState, action) {
@@ -22,7 +22,7 @@ export default function (siteHeader = defaultState, action) {
 	case ON_CLICK_NAV:
 		return {
 			...siteHeader,
-			selected: action.selected
+			selectedPage: action.selectedPage
 		};
 
 	default:

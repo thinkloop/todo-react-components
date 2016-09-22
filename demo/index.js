@@ -1,4 +1,4 @@
-import app from '../src/app';
+import { app } from '../src/components';
 import store from './store';
 
 const appElement = document.getElementById('app');

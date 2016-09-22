@@ -62,7 +62,7 @@
   },
   "config": {
     "build_folder": "./build",
-    "build_entry_file": "./src/app.jsx",
+    "build_entry_file": "./src/components.js",
     "demo_js_entry_file": "./demo/index.js",
     "demo_html_entry_file": "./demo/index.html",
     "demo_build_folder": "./build_demo"

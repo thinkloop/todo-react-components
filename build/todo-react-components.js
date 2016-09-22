@@ -20515,7 +20515,7 @@ AboutPage.propTypes = {
 
 exports.default = AboutPage;
 
-},{"../site/site-header":176,"classnames":1,"react":171}],173:[function(_dereq_,module,exports){
+},{"../site/site-header":177,"classnames":1,"react":171}],173:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20527,12 +20527,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 exports.default = function (appElement, data) {
 	var page = void 0;
 
-	if (data.siteHeader.selected !== window.location.pathname) {
-		window.history.pushState(null, null, data.siteHeader.selected);
+	if (data.url !== window.location.pathname) {
+		window.history.pushState(null, null, data.url);
 	}
 
-	switch (data.siteHeader.selected) {
-		case _pages.ABOUT_HREF:
+	switch (data.selectedPage) {
+		case _pages.ABOUT:
 			page = _react2.default.createElement(_aboutPage2.default, {
 				className: 'about-page',
 				siteHeader: data.siteHeader
@@ -20568,7 +20568,7 @@ var _aboutPage2 = _interopRequireDefault(_aboutPage);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-},{"./about/about-page":172,"./site/constants/pages":175,"./todos/todos-page":181,"react":171,"react-dom":2}],174:[function(_dereq_,module,exports){
+},{"./about/about-page":172,"./site/constants/pages":176,"./todos/todos-page":182,"react":171,"react-dom":2}],174:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20640,12 +20640,52 @@ exports.default = Link;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.constants = exports.app = undefined;
+
+var _app = _dereq_('./app');
+
+var _app2 = _interopRequireDefault(_app);
+
+var _pages = _dereq_('./site/constants/pages');
+
+var PAGES = _interopRequireWildcard(_pages);
+
+var _statuses = _dereq_('./todos/constants/statuses');
+
+var TODO_STATUSES = _interopRequireWildcard(_statuses);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var constants = {
+	PAGES: PAGES,
+	TODO_STATUSES: TODO_STATUSES
+};
+
+var components = {
+	app: _app2.default,
+	constants: constants
+};
+exports.default = components;
+
+// also adding this notation to allow for importing specific pieces: import { App } from '...';
+
+exports.app = _app2.default;
+exports.constants = constants;
+
+},{"./app":173,"./site/constants/pages":176,"./todos/constants/statuses":178}],176:[function(_dereq_,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var HOME_HREF = exports.HOME_HREF = '/';
-var ABOUT_HREF = exports.ABOUT_HREF = '/about';
+var HOME = exports.HOME = 'HOME';
+var ABOUT = exports.ABOUT = 'ABOUT';
 
-},{}],176:[function(_dereq_,module,exports){
+},{}],177:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20677,12 +20717,12 @@ var SiteHeader = function SiteHeader(p) {
 			null,
 			_react2.default.createElement(
 				_link2.default,
-				{ className: (0, _classnames2.default)({ selected: p.selected === _pages.HOME_HREF }), href: p.hrefHome, onClick: p.onClickHome },
+				{ className: (0, _classnames2.default)({ selected: p.selectedPage === _pages.HOME }), href: p.hrefHome, onClick: p.onClickHome },
 				p.labelHome
 			),
 			_react2.default.createElement(
 				_link2.default,
-				{ className: (0, _classnames2.default)({ selected: p.selected === _pages.ABOUT_HREF }), href: p.hrefAbout, onClick: p.onClickAbout },
+				{ className: (0, _classnames2.default)({ selected: p.selectedPage === _pages.ABOUT }), href: p.hrefAbout, onClick: p.onClickAbout },
 				p.labelAbout
 			)
 		)
@@ -20691,6 +20731,8 @@ var SiteHeader = function SiteHeader(p) {
 
 SiteHeader.propTypes = {
 	className: _react2.default.PropTypes.string,
+
+	selectedPage: _react2.default.PropTypes.string,
 
 	labelHome: _react2.default.PropTypes.string,
 	labelAbout: _react2.default.PropTypes.string,
@@ -20704,7 +20746,7 @@ SiteHeader.propTypes = {
 
 exports.default = SiteHeader;
 
-},{"../common/link":174,"../site/constants/pages":175,"classnames":1,"react":171}],177:[function(_dereq_,module,exports){
+},{"../common/link":174,"../site/constants/pages":176,"classnames":1,"react":171}],178:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20714,7 +20756,7 @@ var PENDING = exports.PENDING = 'PENDING';
 var COMPLETE = exports.COMPLETE = 'COMPLETE';
 var TOTAL = exports.TOTAL = 'TOTAL';
 
-},{}],178:[function(_dereq_,module,exports){
+},{}],179:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20763,7 +20805,7 @@ TodoItem.propTypes = {
 
 exports.default = TodoItem;
 
-},{"classnames":1,"react":171}],179:[function(_dereq_,module,exports){
+},{"classnames":1,"react":171}],180:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20805,7 +20847,7 @@ TodosList.propTypes = {
 
 exports.default = TodosList;
 
-},{"../todos/todo-item":178,"classnames":1,"react":171}],180:[function(_dereq_,module,exports){
+},{"../todos/todo-item":179,"classnames":1,"react":171}],181:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20880,7 +20922,7 @@ TodosNewForm.propTypes = {
 };
 exports.default = TodosNewForm;
 
-},{"classnames":1,"react":171}],181:[function(_dereq_,module,exports){
+},{"classnames":1,"react":171}],182:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20942,7 +20984,7 @@ TodosPage.propTypes = {
 
 exports.default = TodosPage;
 
-},{"../site/site-header":176,"../todos/todos-list":179,"../todos/todos-new-form":180,"../todos/todos-summary":182,"classnames":1,"react":171}],182:[function(_dereq_,module,exports){
+},{"../site/site-header":177,"../todos/todos-list":180,"../todos/todos-new-form":181,"../todos/todos-summary":183,"classnames":1,"react":171}],183:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20967,17 +21009,17 @@ var TodosSummary = function TodosSummary(p) {
 		{ className: (0, _classnames2.default)('todo-summary', p.className) },
 		_react2.default.createElement(
 			'span',
-			{ className: (0, _classnames2.default)('todo-summary-pending', { 'is-selected': p.selected === _statuses.PENDING }), onClick: p.onClickPending },
+			{ className: (0, _classnames2.default)('todo-summary-pending', { 'is-selected': p.selectedSummaryStatus === _statuses.PENDING }), onClick: p.onClickPending },
 			p.countIncomplete
 		),
 		_react2.default.createElement(
 			'span',
-			{ className: (0, _classnames2.default)('todo-summary-complete', { 'is-selected': p.selected === _statuses.COMPLETE }), onClick: p.onClickComplete },
+			{ className: (0, _classnames2.default)('todo-summary-complete', { 'is-selected': p.selectedSummaryStatus === _statuses.COMPLETE }), onClick: p.onClickComplete },
 			p.countComplete
 		),
 		_react2.default.createElement(
 			'span',
-			{ className: (0, _classnames2.default)('todo-summary-total', { 'is-selected': p.selected === _statuses.TOTAL }), onClick: p.onClickTotal },
+			{ className: (0, _classnames2.default)('todo-summary-total', { 'is-selected': p.selectedSummaryStatus === _statuses.TOTAL }), onClick: p.onClickTotal },
 			p.countTotal
 		)
 	);
@@ -20990,7 +21032,7 @@ TodosSummary.propTypes = {
 	countComplete: _react2.default.PropTypes.string,
 	countTotal: _react2.default.PropTypes.string,
 
-	selected: _react2.default.PropTypes.oneOf([_statuses.PENDING, _statuses.COMPLETE, _statuses.TOTAL]),
+	selectedSummaryStatus: _react2.default.PropTypes.oneOf([_statuses.PENDING, _statuses.COMPLETE, _statuses.TOTAL]),
 
 	onClickPending: _react2.default.PropTypes.func,
 	onClickComplete: _react2.default.PropTypes.func,
@@ -20999,5 +21041,5 @@ TodosSummary.propTypes = {
 
 exports.default = TodosSummary;
 
-},{"../todos/constants/statuses":177,"classnames":1,"react":171}]},{},[173])(173)
+},{"../todos/constants/statuses":178,"classnames":1,"react":171}]},{},[175])(175)
 });

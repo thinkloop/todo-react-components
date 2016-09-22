@@ -4,9 +4,13 @@ import thunk from 'redux-thunk';
 // reducers
 import todos from './todos/reducers/todos';
 import siteHeader from './site/reducers/site-header';
+import url from './site/reducers/url';
+import selectedPage from './site/reducers/selected-page';
 const reducers = {
-	todos,
-	siteHeader
+	selectedPage,
+	url,
+	siteHeader,
+	todos
 };
 
 // console log middleware
