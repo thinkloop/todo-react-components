@@ -4,6 +4,7 @@ import classnames from 'classnames';
 export default class TodosNewForm extends Component {
 	static propTypes = {
 		className: React.PropTypes.string,
+		placeholder: React.PropTypes.string,
 		onSubmit: React.PropTypes.func
 	};
 
@@ -22,8 +23,8 @@ export default class TodosNewForm extends Component {
 		const p = this.props;
 		const s = this.state;
 		return (
-			<form className={ classnames('todos-new-form', p.className) } onSubmit={ this.handleOnSubmit }>
-				<input className="todos-new-form-input" value={ s.value } placeholder="What needs to be done?" onChange={ this.handleOnChange } />
+			<form className={ classnames(p.className) } onSubmit={ this.handleOnSubmit }>
+				<input className="todos-new-form-input" value={ s.value } placeholder={ p.placeholder } onChange={ this.handleOnChange } />
 			</form>
 		);
 	}

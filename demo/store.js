@@ -3,8 +3,10 @@ import thunk from 'redux-thunk';
 
 // reducers
 import todos from './todos/reducers/todos';
+import siteHeader from './site/reducers/site-header';
 const reducers = {
-	todos
+	todos,
+	siteHeader
 };
 
 // console log middleware

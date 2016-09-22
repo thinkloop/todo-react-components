@@ -20481,14 +20481,71 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _react = _dereq_('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = _dereq_('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _siteHeader = _dereq_('../site/site-header');
+
+var _siteHeader2 = _interopRequireDefault(_siteHeader);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var AboutPage = function AboutPage(p) {
+	return _react2.default.createElement(
+		'div',
+		null,
+		_react2.default.createElement(_siteHeader2.default, p.siteHeader),
+		_react2.default.createElement(
+			'main',
+			{ className: (0, _classnames2.default)('page', p.className) },
+			'About Page'
+		)
+	);
+};
+
+AboutPage.propTypes = {
+	className: _react2.default.PropTypes.string,
+	siteHeader: _react2.default.PropTypes.object
+};
+
+exports.default = AboutPage;
+
+},{"../site/site-header":176,"classnames":1,"react":171}],173:[function(_dereq_,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 exports.default = function (appElement, data) {
 	var page = void 0;
 
-	page = _react2.default.createElement(_todosPage2.default, _extends({
-		className: 'todos-page'
-	}, data.todos));
+	if (data.siteHeader.selected !== window.location.pathname) {
+		window.history.pushState(null, null, data.siteHeader.selected);
+	}
+
+	switch (data.siteHeader.selected) {
+		case _pages.ABOUT_HREF:
+			page = _react2.default.createElement(_aboutPage2.default, {
+				className: 'about-page',
+				siteHeader: data.siteHeader
+			});
+			break;
+		default:
+			page = _react2.default.createElement(_todosPage2.default, _extends({
+				className: 'todos-page'
+			}, data.todos, {
+				siteHeader: data.siteHeader
+			}));
+			break;
+	}
 
 	(0, _reactDom.render)(page, appElement);
 };
@@ -20499,13 +20556,165 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDom = _dereq_('react-dom');
 
+var _pages = _dereq_('./site/constants/pages');
+
 var _todosPage = _dereq_('./todos/todos-page');
 
 var _todosPage2 = _interopRequireDefault(_todosPage);
 
+var _aboutPage = _dereq_('./about/about-page');
+
+var _aboutPage2 = _interopRequireDefault(_aboutPage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-},{"./todos/todos-page":176,"react":171,"react-dom":2}],173:[function(_dereq_,module,exports){
+},{"./about/about-page":172,"./site/constants/pages":175,"./todos/todos-page":181,"react":171,"react-dom":2}],174:[function(_dereq_,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = _dereq_('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Link = function (_Component) {
+	_inherits(Link, _Component);
+
+	function Link(props) {
+		_classCallCheck(this, Link);
+
+		var _this = _possibleConstructorReturn(this, (Link.__proto__ || Object.getPrototypeOf(Link)).call(this, props));
+
+		_this.handleClick = function (e) {
+			// if target is set (e.g. to "_blank"), let the browser handle it
+			if (_this.props.target || _this.props.href && _this.props.href.indexOf('mailto:') === 0) {
+				return;
+			}
+			// if not a left click or is a special click, let the browser handle it
+			if (!e.button === 0 || e.metaKey || e.altKey || e.ctrlKey || e.shiftKey) {
+				return;
+			}
+			e.preventDefault();
+			if (_this.props.onClick) {
+				_this.props.onClick(_this.props.href);
+			}
+		};
+
+		_this.handleClick = _this.handleClick.bind(_this);
+		return _this;
+	}
+
+	_createClass(Link, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement('a', _extends({}, this.props, { href: this.props.href, className: 'link ' + this.props.className, onClick: this.handleClick }));
+		}
+	}]);
+
+	return Link;
+}(_react.Component);
+
+Link.propTypes = {
+	className: _react.PropTypes.string,
+	href: _react.PropTypes.string,
+	target: _react.PropTypes.string,
+	onClick: _react.PropTypes.func
+};
+exports.default = Link;
+
+},{"react":171}],175:[function(_dereq_,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var HOME_HREF = exports.HOME_HREF = '/';
+var ABOUT_HREF = exports.ABOUT_HREF = '/about';
+
+},{}],176:[function(_dereq_,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = _dereq_('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = _dereq_('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _pages = _dereq_('../site/constants/pages');
+
+var _link = _dereq_('../common/link');
+
+var _link2 = _interopRequireDefault(_link);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SiteHeader = function SiteHeader(p) {
+	return _react2.default.createElement(
+		'header',
+		{ className: (0, _classnames2.default)('site-header', p.className) },
+		_react2.default.createElement(
+			'nav',
+			null,
+			_react2.default.createElement(
+				_link2.default,
+				{ className: (0, _classnames2.default)({ selected: p.selected === _pages.HOME_HREF }), href: p.hrefHome, onClick: p.onClickHome },
+				p.labelHome
+			),
+			_react2.default.createElement(
+				_link2.default,
+				{ className: (0, _classnames2.default)({ selected: p.selected === _pages.ABOUT_HREF }), href: p.hrefAbout, onClick: p.onClickAbout },
+				p.labelAbout
+			)
+		)
+	);
+};
+
+SiteHeader.propTypes = {
+	className: _react2.default.PropTypes.string,
+
+	labelHome: _react2.default.PropTypes.string,
+	labelAbout: _react2.default.PropTypes.string,
+
+	hrefHome: _react2.default.PropTypes.string,
+	hrefAbout: _react2.default.PropTypes.string,
+
+	onClickHome: _react2.default.PropTypes.func,
+	onClickAbout: _react2.default.PropTypes.func
+};
+
+exports.default = SiteHeader;
+
+},{"../common/link":174,"../site/constants/pages":175,"classnames":1,"react":171}],177:[function(_dereq_,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var PENDING = exports.PENDING = 'PENDING';
+var COMPLETE = exports.COMPLETE = 'COMPLETE';
+var TOTAL = exports.TOTAL = 'TOTAL';
+
+},{}],178:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20524,16 +20733,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var TodoItem = function TodoItem(p) {
 	return _react2.default.createElement(
-		'li',
-		{ className: (0, _classnames2.default)('todo-item', p.className, { 'checked': p.isComplete }) },
+		'article',
+		{ className: (0, _classnames2.default)('list-item', { 'checked': p.isComplete }, p.className) },
+		_react2.default.createElement('input', { className: 'checkbox', type: 'checkbox', checked: p.isComplete, onChange: p.onCheckboxToggled }),
 		_react2.default.createElement(
 			'span',
-			{ className: 'todo-item-description' },
+			{ className: 'description' },
 			p.description
 		),
 		_react2.default.createElement(
 			'button',
-			{ className: 'todo-item-button', onClick: p.onButtonClicked },
+			{ className: 'button', onClick: p.onButtonClicked },
 			p.buttonLabel
 		)
 	);
@@ -20541,21 +20751,26 @@ var TodoItem = function TodoItem(p) {
 
 TodoItem.propTypes = {
 	className: _react2.default.PropTypes.string,
-	id: _react2.default.PropTypes.string,
+
 	description: _react2.default.PropTypes.string,
 	isComplete: _react2.default.PropTypes.bool,
+
 	buttonLabel: _react2.default.PropTypes.string,
-	onButtonClicked: _react2.default.PropTypes.func
+
+	onButtonClicked: _react2.default.PropTypes.func,
+	onCheckboxToggled: _react2.default.PropTypes.func
 };
 
 exports.default = TodoItem;
 
-},{"classnames":1,"react":171}],174:[function(_dereq_,module,exports){
+},{"classnames":1,"react":171}],179:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = _dereq_('react');
 
@@ -20573,16 +20788,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var TodosList = function TodosList(p) {
 	return _react2.default.createElement(
-		'ul',
-		{ className: (0, _classnames2.default)('todos-list', p.className) },
+		'section',
+		{ className: (0, _classnames2.default)('list', p.className) },
 		!!p.todos && p.todos.map(function (todo) {
-			return _react2.default.createElement(_todoItem2.default, {
-				key: todo.id,
-				description: todo.description,
-				isComplete: todo.isComplete,
-				buttonLabel: todo.buttonLabel,
-				onButtonClicked: todo.onButtonClicked
-			});
+			return _react2.default.createElement(_todoItem2.default, _extends({
+				key: todo.id
+			}, todo));
 		})
 	);
 };
@@ -20594,7 +20805,7 @@ TodosList.propTypes = {
 
 exports.default = TodosList;
 
-},{"../todos/todo-item":173,"classnames":1,"react":171}],175:[function(_dereq_,module,exports){
+},{"../todos/todo-item":178,"classnames":1,"react":171}],180:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20653,8 +20864,8 @@ var TodosNewForm = function (_Component) {
 			var s = this.state;
 			return _react2.default.createElement(
 				'form',
-				{ className: (0, _classnames2.default)('todos-new-form', p.className), onSubmit: this.handleOnSubmit },
-				_react2.default.createElement('input', { className: 'todos-new-form-input', value: s.value, placeholder: 'What needs to be done?', onChange: this.handleOnChange })
+				{ className: (0, _classnames2.default)(p.className), onSubmit: this.handleOnSubmit },
+				_react2.default.createElement('input', { className: 'todos-new-form-input', value: s.value, placeholder: p.placeholder, onChange: this.handleOnChange })
 			);
 		}
 	}]);
@@ -20664,16 +20875,19 @@ var TodosNewForm = function (_Component) {
 
 TodosNewForm.propTypes = {
 	className: _react2.default.PropTypes.string,
+	placeholder: _react2.default.PropTypes.string,
 	onSubmit: _react2.default.PropTypes.func
 };
 exports.default = TodosNewForm;
 
-},{"classnames":1,"react":171}],176:[function(_dereq_,module,exports){
+},{"classnames":1,"react":171}],181:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = _dereq_('react');
 
@@ -20682,6 +20896,10 @@ var _react2 = _interopRequireDefault(_react);
 var _classnames = _dereq_('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
+
+var _siteHeader = _dereq_('../site/site-header');
+
+var _siteHeader2 = _interopRequireDefault(_siteHeader);
 
 var _todosNewForm = _dereq_('../todos/todos-new-form');
 
@@ -20699,24 +20917,32 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var TodosPage = function TodosPage(p) {
 	return _react2.default.createElement(
-		'main',
-		{ className: (0, _classnames2.default)('page todos', p.className) },
-		_react2.default.createElement(_todosNewForm2.default, { onSubmit: p.onNewSubmit }),
-		_react2.default.createElement(_todosList2.default, { todos: p.list }),
-		!!p.summary && _react2.default.createElement(_todosSummary2.default, p.summary)
+		'div',
+		null,
+		_react2.default.createElement(_siteHeader2.default, p.siteHeader),
+		_react2.default.createElement(
+			'main',
+			{ className: (0, _classnames2.default)('page', p.className) },
+			!!p.newForm && _react2.default.createElement(_todosNewForm2.default, _extends({ className: 'todos-new-form' }, p.newForm)),
+			!!p.list && _react2.default.createElement(_todosList2.default, { className: 'todos-list', todos: p.list }),
+			!!p.summary && _react2.default.createElement(_todosSummary2.default, _extends({ className: 'todos-summary' }, p.summary))
+		)
 	);
 };
 
 TodosPage.propTypes = {
 	className: _react2.default.PropTypes.string,
+
+	siteHeader: _react2.default.PropTypes.object,
+
+	newForm: _react2.default.PropTypes.object,
 	list: _react2.default.PropTypes.array,
-	summary: _react2.default.PropTypes.object,
-	onNewSubmit: _react2.default.PropTypes.func
+	summary: _react2.default.PropTypes.object
 };
 
 exports.default = TodosPage;
 
-},{"../todos/todos-list":174,"../todos/todos-new-form":175,"../todos/todos-summary":177,"classnames":1,"react":171}],177:[function(_dereq_,module,exports){
+},{"../site/site-header":176,"../todos/todos-list":179,"../todos/todos-new-form":180,"../todos/todos-summary":182,"classnames":1,"react":171}],182:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20731,6 +20957,8 @@ var _classnames = _dereq_('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _statuses = _dereq_('../todos/constants/statuses');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var TodosSummary = function TodosSummary(p) {
@@ -20739,33 +20967,37 @@ var TodosSummary = function TodosSummary(p) {
 		{ className: (0, _classnames2.default)('todo-summary', p.className) },
 		_react2.default.createElement(
 			'span',
-			{ className: 'todo-summary-pending' },
-			p.countIncomplete + ' pending'
+			{ className: (0, _classnames2.default)('todo-summary-pending', { 'is-selected': p.selected === _statuses.PENDING }), onClick: p.onClickPending },
+			p.countIncomplete
 		),
-		_react2.default.createElement('br', null),
 		_react2.default.createElement(
 			'span',
-			{ className: 'todo-summary-complete' },
-			p.countComplete + ' complete'
+			{ className: (0, _classnames2.default)('todo-summary-complete', { 'is-selected': p.selected === _statuses.COMPLETE }), onClick: p.onClickComplete },
+			p.countComplete
 		),
-		_react2.default.createElement('br', null),
 		_react2.default.createElement(
 			'span',
-			{ className: 'todo-summary-total' },
-			p.countTotal + ' total'
-		),
-		_react2.default.createElement('br', null)
+			{ className: (0, _classnames2.default)('todo-summary-total', { 'is-selected': p.selected === _statuses.TOTAL }), onClick: p.onClickTotal },
+			p.countTotal
+		)
 	);
 };
 
 TodosSummary.propTypes = {
 	className: _react2.default.PropTypes.string,
-	countIncomplete: _react2.default.PropTypes.number,
-	countComplete: _react2.default.PropTypes.number,
-	countTotal: _react2.default.PropTypes.number
+
+	countIncomplete: _react2.default.PropTypes.string,
+	countComplete: _react2.default.PropTypes.string,
+	countTotal: _react2.default.PropTypes.string,
+
+	selected: _react2.default.PropTypes.oneOf([_statuses.PENDING, _statuses.COMPLETE, _statuses.TOTAL]),
+
+	onClickPending: _react2.default.PropTypes.func,
+	onClickComplete: _react2.default.PropTypes.func,
+	onClickTotal: _react2.default.PropTypes.func
 };
 
 exports.default = TodosSummary;
 
-},{"classnames":1,"react":171}]},{},[172])(172)
+},{"../todos/constants/statuses":177,"classnames":1,"react":171}]},{},[173])(173)
 });

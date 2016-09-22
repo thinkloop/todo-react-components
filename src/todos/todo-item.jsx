@@ -2,21 +2,25 @@ import React from 'react';
 import classnames from 'classnames';
 
 const TodoItem = (p) => (
-	<li className={ classnames('todo-item', p.className, { 'checked': p.isComplete }) }>
-		<span className="todo-item-description">{ p.description }</span>
-		<button className="todo-item-button" onClick={ p.onButtonClicked }>
+	<article className={ classnames('list-item', { 'checked': p.isComplete }, p.className) }>
+		<input className="checkbox" type="checkbox" checked={ p.isComplete } onChange={ p.onCheckboxToggled } />
+		<span className="description">{ p.description }</span>
+		<button className="button" onClick={ p.onButtonClicked }>
 			{ p.buttonLabel }
 		</button>
-	</li>
+	</article>
 );
 
 TodoItem.propTypes = {
 	className: React.PropTypes.string,
-	id: React.PropTypes.string,
+
 	description: React.PropTypes.string,
 	isComplete: React.PropTypes.bool,
+
 	buttonLabel: React.PropTypes.string,
-	onButtonClicked: React.PropTypes.func
+
+	onButtonClicked: React.PropTypes.func,
+	onCheckboxToggled: React.PropTypes.func
 };
 
 export default TodoItem;
