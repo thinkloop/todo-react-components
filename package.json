@@ -39,9 +39,7 @@
   },
   "homepage": "https://github.com/thinkloop/todo-react-components#readme",
   "dependencies": {
-    "classnames": "2.2.5",
-    "react": "15.3.2",
-    "react-dom": "15.3.2"
+    "classnames": "2.2.5"
   },
   "devDependencies": {
     "augur-ui-webserver": "^1.1.0",
@@ -50,6 +48,7 @@
     "babel-preset-stage-0": "6.5.0",
     "babelify": "^7.3.0",
     "browserify": "13.1.0",
+    "browserify-shim": "^3.8.12",
     "derequire": "^2.0.3",
     "exorcist": "^0.4.0",
     "npm-check-updates": "^2.8.0",
@@ -59,6 +58,15 @@
     "rimraf": "^2.5.4",
     "uglifyjs": "^2.4.10",
     "watchify": "^3.7.0"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "react": "global:React",
+    "react-dom": "global:ReactDOM"
   },
   "config": {
     "build_folder": "./build",
