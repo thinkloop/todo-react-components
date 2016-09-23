@@ -42,7 +42,7 @@ npm start
 Or simply download the [build_demo](build_demo) folder and start a webserver at the root.
 
 ### Design Conventions Used
-Conventions used to drive architecture and design of components:
+Following are some of the conventions used to drive architecture and design choices:
 - pass in most data as props
 - use local state for temporary data, performance, throw-away data
 - develop component data interfaces as simply and minimally as possible
