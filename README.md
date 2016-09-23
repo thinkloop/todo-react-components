@@ -1,6 +1,6 @@
 # Todo App - View-Layer (React-Components)
 
-This is 1 of 3 projects that make up the [advanced todo app](https://github.com/thinkloop/todo-app). It contains the view components and view logic of the app, and nothing else. The components were built in isolation, without concern for other projects or implementors including the advanced todo app itself. 
+This is 1 of 3 projects that make up the [advanced todo app](https://github.com/thinkloop/todo-app). It provides the view-layer of the app in the form of react components, and nothing else. It exports a single top-level react component that renders the entire ui based on provided state. While the advanced todo app implements this project, this project is not aware of, nor dependent on, the advanced todo app, or any other implementors. It was designed and developed in isolation, as a stand-alone mini-app, with a generalized interface, so that it can be implemented by multiple apps while remaining completely decoupled from them.
 
 A single top-level react component is exported that renders the full ui when invoked:
 
