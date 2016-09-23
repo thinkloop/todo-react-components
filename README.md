@@ -10,12 +10,12 @@ Here is an example of how a 3rd-party could integrate this project:
 * imports this project and renders the full ui
 */
 
-import { app } from 'todo-react-components'; 
+import { components } from 'todo-react-components'; 
 
-const appElement = document.getElementById('app');
+const domElement = document.getElementById('app');
 const state = {};
 
-app(appElement, state); // render entire view
+components(domElement, state); // render entire view
 
 ```
 
