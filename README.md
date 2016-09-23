@@ -38,3 +38,12 @@ Or download the latest build of [todo-react-components.js](build/todo-react-comp
 - group inner component interfaces into objects that can be easily handled by parents
 - destructure objects as you walk down the tree, passing in the simplest forms
 - pass in all strings/labels/text to allow for more flexible re-use
+
+### Demo App
+
+This project comes with a demo app. To run it, clone the project, start the web server and navigate to the url:
+
+```
+git clone https://github.com/thinkloop/todo-react-components
+npm start
+```
