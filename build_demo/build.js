@@ -17,7 +17,7 @@ Object.defineProperty(window, 'state', { get: function get() {
 console.log('********************************************* \n DEVELOPMENT MODE \n window.state available \n ********************************************* \n');
 
 _store2.default.subscribe(function () {
-  return (0, _todoReactComponents.components)(appElement, _store2.default.getState());
+  return (0, _todoReactComponents.component)(appElement, _store2.default.getState());
 });
 
 _store2.default.dispatch({ type: 'init' });
@@ -1632,11 +1632,11 @@ exports.default = SiteHeader;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.constants = exports.components = undefined;
+exports.constants = exports.component = undefined;
 
-var _components = require('./components');
+var _component = require('./component');
 
-var _components2 = _interopRequireDefault(_components);
+var _component2 = _interopRequireDefault(_component);
 
 var _pages = require('./site/constants/pages');
 
@@ -1656,17 +1656,17 @@ var constants = {
 };
 
 exports.default = {
-	components: _components2.default,
+	component: _component2.default,
 
 	constants: {
 		PAGES: PAGES,
 		TODO_STATUSES: TODO_STATUSES
 	}
 };
-exports.components = _components2.default;
+exports.component = _component2.default;
 exports.constants = constants;
 
-},{"./components":26,"./site/constants/pages":27,"./todos/constants/statuses":30}],30:[function(require,module,exports){
+},{"./component":26,"./site/constants/pages":27,"./todos/constants/statuses":30}],30:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

@@ -1,4 +1,4 @@
-import components from './components';
+import component from './component';
 import * as PAGES from './site/constants/pages';
 import * as TODO_STATUSES from './todos/constants/statuses';
 
@@ -9,7 +9,7 @@ const constants = {
 
 
 export default {
-	components,
+	component,
 
 	constants: {
 		PAGES,
@@ -18,6 +18,6 @@ export default {
 };
 
 export {
-	components,
+	component,
 	constants
 };
