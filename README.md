@@ -32,9 +32,11 @@ Then in your app `import` the project:
 ```javascript
 import { components, constants } from 'todo-react-components'; 
 
-components(htmlElement, state); // renders entire ui
+// render entire ui
+components(htmlElement, state);
 
-console.log(constants); // dumps constants object
+// dumps constants object
+console.log(constants);
 ```
 
 or `require` it:
@@ -42,9 +44,11 @@ or `require` it:
 ```javascript
 var todoReactComponents  = require('todo-react-components');
 
-todoReactComponents.components(htmlElement, state); // renders entire ui
+// render entire ui
+todoReactComponents.components(htmlElement, state);
 
-console.log(todoReactComponents.constants); // dumps constants object
+// dumps constants object
+console.log(todoReactComponents.constants); 
 ```
 
 ### Demo App
