@@ -38,7 +38,7 @@ This project comes with a demo app. To run it, clone the project, start the webs
 
 // navigate to url
 ```
-Or simply download the [build_demo](build_demo) folder and start a webserver at the root.
+Or simply download the [build_demo](build_demo) folder and start a webserver at its root.
 
 ### Design Conventions Used
 Following are some of the conventions used to drive architecture and design choices:
