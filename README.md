@@ -1,8 +1,8 @@
 # Todo App - View-Layer (React-Components)
 
-This is 1 of 3 projects that make up the [advanced todo app](https://github.com/thinkloop/todo-app). It provides the view-layer of the app in the form of react components, and nothing else. It exports a single top-level react component that renders the entire ui based on provided state. While this project comprises part of the advanced todo app, it is not aware of, nor dependent on, the advanced todo app, or any other implementers. It was designed and developed in isolation, as a stand-alone app, with a generalized interface, so that it can be implemented by multiple apps and remain completely decoupled from them.
+This is 1 of 3 projects that make up the [advanced todo app](https://github.com/thinkloop/todo-app). It provides the view-layer of the app in the form of react components, and nothing else. It exports a single top-level react component that renders the entire ui based on provided state. While this project is part of the advanced todo app, it is not actually aware of, nor dependent on, the advanced todo app (or any other implementers). It was designed and developed in isolation, independently, as a stand-alone app, with a generalized interface, so that it can be implemented by any app, including the advanced todo app, while remaining completely decoupled from them.
 
-A single top-level react component is exported that renders the full ui when invoked:
+Here is an example of how a 3rd-party app might implement this view layer:
 
 ```javascript
 /* 
@@ -10,12 +10,12 @@ A single top-level react component is exported that renders the full ui when inv
 * imports this project and renders the full ui
 */
 
-import { app } from 'todo-react-components';
+import { app } from 'todo-react-components'; 
 
 const appElement = document.getElementById('app');
 const state = {};
 
-app(appElement, state);
+app(appElement, state); // render entire view
 
 ```
 
