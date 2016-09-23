@@ -51,4 +51,5 @@ Following are some of the conventions used to drive architecture and design choi
 - group inner component interfaces into objects as you go up the hierarchy tree
 - de-structure objects into individual props as you go down the hierarchy tree
 - pass in all strings/labels/text to allow for more flexible component re-use
-
+- name things with as little specificity as possible
+- name things relative to ui elements not domain knowledge: `onClickButton` instead of `onClickAddTodo`
