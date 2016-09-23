@@ -15,7 +15,7 @@
     "watch:html:do": "cat $npm_package_config_demo_html_entry_file > $npm_package_config_demo_build_folder/index.html && echo ---------HTML-----------`date +%r`",
     "**********": "",
     "build:all": "npm run -s clean:build && npm run -s build:js && npm run -s build:finish",
-    "build:js": "npm run -s build:js:browserify | npm run -s partial:uglify > $npm_package_config_build_folder/todo-react-components.js && echo ---------JS-------------`date +%r`",
+    "build:js": "npm run -s build:js:browserify | npm run -s partial:uglify > $npm_package_config_build_folder/$npm_package_config_build_file && echo ---------JS-------------`date +%r`",
     "build:js:browserify": "browserify $npm_package_config_build_entry_file --extension=.js --extension=.jsx --detectGlobals false --standalone todo-react-components -t [ babelify ] | derequire",
     "build:finish": "echo ---------FINISHED-------`date +%r`",
     "*********": "",
@@ -70,7 +70,8 @@
   },
   "config": {
     "build_folder": "./build",
-    "build_entry_file": "./src/components.js",
+    "build_file": "todo-react-components.js",
+    "build_entry_file": "./src/todo-react-components.js",
     "demo_js_entry_file": "./demo/index.js",
     "demo_html_entry_file": "./demo/index.html",
     "demo_build_folder": "./build_demo"

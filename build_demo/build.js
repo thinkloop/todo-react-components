@@ -1,7 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var _components = require('../src/components');
+var _todoReactComponents = require('../src/todo-react-components');
 
 var _store = require('./store');
 
@@ -17,12 +17,12 @@ Object.defineProperty(window, 'state', { get: function get() {
 console.log('********************************************* \n DEVELOPMENT MODE \n window.state available \n ********************************************* \n');
 
 _store2.default.subscribe(function () {
-  return (0, _components.app)(appElement, _store2.default.getState());
+  return (0, _todoReactComponents.components)(appElement, _store2.default.getState());
 });
 
 _store2.default.dispatch({ type: 'init' });
 
-},{"../src/components":27,"./store":5}],2:[function(require,module,exports){
+},{"../src/todo-react-components":29,"./store":5}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -46,7 +46,7 @@ var _siteHeader = require('../../site/reducers/site-header');
 
 var _pages = require('../../../src/site/constants/pages');
 
-},{"../../../src/site/constants/pages":28,"../../site/reducers/site-header":3}],3:[function(require,module,exports){
+},{"../../../src/site/constants/pages":27,"../../site/reducers/site-header":3}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -99,7 +99,7 @@ var defaultState = {
 	}
 };
 
-},{"../../../src/site/constants/pages":28,"../../store":5}],4:[function(require,module,exports){
+},{"../../../src/site/constants/pages":27,"../../store":5}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -127,7 +127,7 @@ var _siteHeader = require('../../site/reducers/site-header');
 
 var _pages = require('../../../src/site/constants/pages');
 
-},{"../../../src/site/constants/pages":28,"../../site/reducers/site-header":3}],5:[function(require,module,exports){
+},{"../../../src/site/constants/pages":27,"../../site/reducers/site-header":3}],5:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -1426,63 +1426,7 @@ exports.default = AboutPage;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../site/site-header":29,"classnames":8}],25:[function(require,module,exports){
-(function (global){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-exports.default = function (appElement, data) {
-	var page = void 0;
-
-	if (data.url !== window.location.pathname) {
-		window.history.pushState(null, null, data.url);
-	}
-
-	switch (data.selectedPage) {
-		case _pages.ABOUT:
-			page = _react2.default.createElement(_aboutPage2.default, {
-				className: 'about-page',
-				siteHeader: data.siteHeader
-			});
-			break;
-		default:
-			page = _react2.default.createElement(_todosPage2.default, _extends({
-				className: 'todos-page'
-			}, data.todos, {
-				siteHeader: data.siteHeader
-			}));
-			break;
-	}
-
-	(0, _reactDom.render)(page, appElement);
-};
-
-var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = (typeof window !== "undefined" ? window['ReactDOM'] : typeof global !== "undefined" ? global['ReactDOM'] : null);
-
-var _pages = require('./site/constants/pages');
-
-var _todosPage = require('./todos/todos-page');
-
-var _todosPage2 = _interopRequireDefault(_todosPage);
-
-var _aboutPage = require('./about/about-page');
-
-var _aboutPage2 = _interopRequireDefault(_aboutPage);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-
-},{"./about/about-page":24,"./site/constants/pages":28,"./todos/todos-page":34}],26:[function(require,module,exports){
+},{"../site/site-header":28,"classnames":8}],25:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1553,47 +1497,63 @@ exports.default = Link;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],27:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
+(function (global){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.constants = exports.app = undefined;
 
-var _app = require('./app');
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _app2 = _interopRequireDefault(_app);
+exports.default = function (appElement, data) {
+	var page = void 0;
+
+	if (data.url !== window.location.pathname) {
+		window.history.pushState(null, null, data.url);
+	}
+
+	switch (data.selectedPage) {
+		case _pages.ABOUT:
+			page = _react2.default.createElement(_aboutPage2.default, {
+				className: 'about-page',
+				siteHeader: data.siteHeader
+			});
+			break;
+		default:
+			page = _react2.default.createElement(_todosPage2.default, _extends({
+				className: 'todos-page'
+			}, data.todos, {
+				siteHeader: data.siteHeader
+			}));
+			break;
+	}
+
+	(0, _reactDom.render)(page, appElement);
+};
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = (typeof window !== "undefined" ? window['ReactDOM'] : typeof global !== "undefined" ? global['ReactDOM'] : null);
 
 var _pages = require('./site/constants/pages');
 
-var PAGES = _interopRequireWildcard(_pages);
+var _todosPage = require('./todos/todos-page');
 
-var _statuses = require('./todos/constants/statuses');
+var _todosPage2 = _interopRequireDefault(_todosPage);
 
-var TODO_STATUSES = _interopRequireWildcard(_statuses);
+var _aboutPage = require('./about/about-page');
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var _aboutPage2 = _interopRequireDefault(_aboutPage);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var constants = {
-	PAGES: PAGES,
-	TODO_STATUSES: TODO_STATUSES
-};
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-var components = {
-	app: _app2.default,
-	constants: constants
-};
-exports.default = components;
-
-// also adding this notation to allow for importing specific pieces: import { App } from '...';
-
-exports.app = _app2.default;
-exports.constants = constants;
-
-},{"./app":25,"./site/constants/pages":28,"./todos/constants/statuses":30}],28:[function(require,module,exports){
+},{"./about/about-page":24,"./site/constants/pages":27,"./todos/todos-page":34}],27:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1602,7 +1562,7 @@ Object.defineProperty(exports, "__esModule", {
 var HOME = exports.HOME = 'HOME';
 var ABOUT = exports.ABOUT = 'ABOUT';
 
-},{}],29:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1666,7 +1626,47 @@ exports.default = SiteHeader;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../common/link":26,"../site/constants/pages":28,"classnames":8}],30:[function(require,module,exports){
+},{"../common/link":25,"../site/constants/pages":27,"classnames":8}],29:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.constants = exports.components = undefined;
+
+var _components = require('./components');
+
+var _components2 = _interopRequireDefault(_components);
+
+var _pages = require('./site/constants/pages');
+
+var PAGES = _interopRequireWildcard(_pages);
+
+var _statuses = require('./todos/constants/statuses');
+
+var TODO_STATUSES = _interopRequireWildcard(_statuses);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var constants = {
+	PAGES: PAGES,
+	TODO_STATUSES: TODO_STATUSES
+};
+
+exports.default = {
+	components: _components2.default,
+
+	constants: {
+		PAGES: PAGES,
+		TODO_STATUSES: TODO_STATUSES
+	}
+};
+exports.components = _components2.default;
+exports.constants = constants;
+
+},{"./components":26,"./site/constants/pages":27,"./todos/constants/statuses":30}],30:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1916,7 +1916,7 @@ exports.default = TodosPage;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../site/site-header":29,"../todos/todos-list":32,"../todos/todos-new-form":33,"../todos/todos-summary":35,"classnames":8}],35:[function(require,module,exports){
+},{"../site/site-header":28,"../todos/todos-list":32,"../todos/todos-new-form":33,"../todos/todos-summary":35,"classnames":8}],35:[function(require,module,exports){
 (function (global){
 'use strict';
 
