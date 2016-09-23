@@ -45,11 +45,11 @@ Or simply download the [build_demo](build_demo) folder and start a webserver at 
 Following are some of the conventions used to drive architecture and design choices:
 - pass in data as props
 - only use local state for: forms, temporary data, performance, throw-away data, or special circumstances
-- develop component data interfaces selfishly, without concern for outside constraints
-- develop component data interfaces without concern for parent component needs
+- develop component data interfaces selfishly, without consideration of outside constraints or data shapes
+- develop component data interfaces without consideration of parent components
 - develop component data interfaces as simply and minimally as possible
-- group inner component interfaces into objects as you go up the hierarchy tree
-- de-structure objects into individual props as you go down the hierarchy tree
-- pass in all strings/labels/text to allow for more flexible component re-use
+- group inner component interfaces into higher-level objects as you climb up the hierarchy tree
+- de-structure objects into individual props as you descend down the hierarchy tree
+- pass in any/all strings, labels, or text, for more flexible component re-use
 - name things with as little specificity as possible
 - name things relative to ui elements not domain knowledge: `onClickButton` instead of `onClickAddTodo`
