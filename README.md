@@ -9,12 +9,12 @@ Example of a 3rd-party integration:
 * 3rd party app imports this project and renders the full ui
 */
 
-import { components } from 'todo-react-components'; 
+import { component } from 'todo-react-components'; 
 
 const domElement = document.getElementById('app');
 const state = {};
 
-components(domElement, state); // render entire view
+component(domElement, state); // render entire view
 
 ```
 
@@ -30,10 +30,10 @@ Or use the latest build of [todo-react-components.js](build/todo-react-component
 Then in your app `import` the project:
 
 ```javascript
-import { components, constants } from 'todo-react-components'; 
+import { component, constants } from 'todo-react-components'; 
 
 // render entire ui
-components(htmlElement, state);
+component(htmlElement, state);
 
 // dump constants object
 console.log(constants);
@@ -45,7 +45,7 @@ or `require` it:
 var todoReactComponents  = require('todo-react-components');
 
 // render entire ui
-todoReactComponents.components(htmlElement, state);
+todoReactComponents.component(htmlElement, state);
 
 // dump constants object
 console.log(todoReactComponents.constants); 
