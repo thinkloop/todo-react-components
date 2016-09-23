@@ -45,10 +45,10 @@ Or simply download the [build_demo](build_demo) folder and start a webserver at 
 Conventions used to drive architecture and design of components:
 - pass in most data as props
 - use local state for temporary data, performance, throw-away data
-- develop component data interfaces as simply and minimaly as possible
+- develop component data interfaces as simply and minimally as possible
 - develop component data interfaces selfishly, without concern for outside constraints, data shapes, sources
 - develop component data interfaces without concern for parent components
 - group inner component interfaces into objects that can be easily handled by parents
-- destructure objects as you walk down the tree, passing in the simplest forms
+- de-structure objects as you go down the tree, passing in individual params
 - pass in all strings/labels/text to allow for more flexible re-use
 
