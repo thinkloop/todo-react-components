@@ -43,8 +43,8 @@ Or simply download the [build_demo](build_demo) folder and start a webserver at 
 
 ### Design Conventions Used
 Following are some of the conventions used to drive architecture and design choices:
-- pass in most data as props
-- use local state for temporary data, performance, throw-away data
+- pass in data as props
+- only use local state for forms, temporary data, performance, throw-away data, or special circumstances
 - develop component data interfaces as simply and minimally as possible
 - develop component data interfaces selfishly, without concern for outside constraints, data shapes, sources
 - develop component data interfaces without concern for parent components
