@@ -36,7 +36,7 @@ This project comes with a demo app. To run it, clone the project, start the webs
 > git clone https://github.com/thinkloop/todo-react-components
 > npm start
 
-// navigate to url
+// open localhost url
 ```
 Or simply download the [build_demo](build_demo) folder and start a webserver at its root.
 
