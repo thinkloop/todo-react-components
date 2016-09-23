@@ -6,8 +6,7 @@ Example of a 3rd-party integration:
 
 ```javascript
 /* 
-* example code in a separate project that 
-* imports this project and renders the full ui
+* 3rd party app imports this project and renders the full ui
 */
 
 import { components } from 'todo-react-components'; 
