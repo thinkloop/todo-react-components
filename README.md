@@ -26,11 +26,11 @@ Using npm:
 npm install todo-react-components --save
 ```
 
-Or include the latest build of [todo-react-components.js](build/todo-react-components.js) in your project.
+Or use the latest build of [todo-react-components.js](build/todo-react-components.js) in your project.
 
 ### Demo App
 
-This project comes with a demo app. To run it, clone the project, start the webserver and navigate to the url:
+The project comes with a demo app that showcases the ui. To run it, clone the project, start the webserver and navigate to the url:
 
 ```
 > git clone https://github.com/thinkloop/todo-react-components
