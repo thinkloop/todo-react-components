@@ -44,7 +44,7 @@ Or simply download the [build_demo](build_demo) folder and start a webserver at 
 Following are some of the conventions used to drive architectural and design choices:
 - pass in data as props
 - only use local state for: forms, performance, temporary data, or special circumstances
-- develop component data interfaces selfishly, without consideration of outside constraints or data shapes
+- develop component data interfaces selfishly, without consideration of external data or constraints
 - develop component data interfaces without consideration of parent components
 - develop component data interfaces as simply and minimally as possible
 - group inner component interfaces into higher-level objects as you climb up the hierarchy tree
