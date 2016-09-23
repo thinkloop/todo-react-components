@@ -46,8 +46,8 @@ Following are some of the conventions used to drive architecture and design choi
 - pass in data as props
 - only use local state for forms, temporary data, performance, throw-away data, or special circumstances
 - develop component data interfaces selfishly, without concern for outside constraints
-- develop component data interfaces as simply and minimally as possible
 - develop component data interfaces without concern for parent component needs
+- develop component data interfaces as simply and minimally as possible
 - group inner component interfaces into objects that can be easily handled by parents
 - de-structure objects as you go down the tree, passing in individual params
 - pass in all strings/labels/text to allow for more flexible re-use
