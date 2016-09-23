@@ -62,7 +62,7 @@ The project comes with a demo app that showcases the ui. To run it, clone the pr
 
 // open localhost url
 ```
-Or download the [build_demo](build_demo) folder and start a webserver in its root.
+Or download the [build_demo](build_demo) folder and start your own webserver in its root.
 
 ### Conventions Used
 Following are some of the conventions used to drive architectural and design choices:
