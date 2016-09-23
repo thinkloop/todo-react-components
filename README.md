@@ -35,7 +35,7 @@ import { components, constants } from 'todo-react-components';
 // render entire ui
 components(htmlElement, state);
 
-// dumps constants object
+// dump constants object
 console.log(constants);
 ```
 
@@ -47,7 +47,7 @@ var todoReactComponents  = require('todo-react-components');
 // render entire ui
 todoReactComponents.components(htmlElement, state);
 
-// dumps constants object
+// dump constants object
 console.log(todoReactComponents.constants); 
 ```
 
