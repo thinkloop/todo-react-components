@@ -1,4 +1,4 @@
-# Todo App View-Layer
+# Todo App - View-Layer (React-Components)
 
 This project is 1 of 3 projects that make up the [advanced todo app](https://github.com/thinkloop/todo-app). It contains view components and view logic and nothing else. The components were built in isolation, without concern for other projects or implementors including the advanced todo app itself. 
 
