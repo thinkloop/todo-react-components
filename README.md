@@ -33,9 +33,8 @@ Or include the latest build of [todo-react-components.js](build/todo-react-compo
 This project comes with a demo app. To run it, clone the project, start the webserver and navigate to the url:
 
 ```
-git clone https://github.com/thinkloop/todo-react-components
-
-npm start
+> git clone https://github.com/thinkloop/todo-react-components
+> npm start
 
 // navigate to url
 ```
