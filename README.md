@@ -27,6 +27,26 @@ npm install todo-react-components --save
 
 Or use the latest build of [todo-react-components.js](build/todo-react-components.js) in your project.
 
+Then in your app `import` the project:
+
+```javascript
+import { components, constants } from 'todo-react-components'; 
+
+components(htmlElement, state); // renders entire ui
+
+console.log(constants); // dumps constants object
+```
+
+or `require` it:
+
+```javascript
+var todoReactComponents  = require('todo-react-components');
+
+todoReactComponents.components(htmlElement, state); // renders entire ui
+
+console.log(todoReactComponents.constants); // dumps constants object
+```
+
 ### Demo App
 
 The project comes with a demo app that showcases the ui. To run it, clone the project, start the webserver and navigate to the url:
