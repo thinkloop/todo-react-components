@@ -40,8 +40,8 @@ This project comes with a demo app. To run it, clone the project, start the webs
 ```
 Or simply download the [build_demo](build_demo) folder and start a webserver at its root.
 
-### Design Conventions Used
-Following are some of the conventions used to drive architecture and design choices:
+### Conventions Used
+Following are some of the conventions used to drive architectural and design choices:
 - pass in data as props
 - only use local state for: forms, performance, temporary data, or special circumstances
 - develop component data interfaces selfishly, without consideration of outside constraints or data shapes
