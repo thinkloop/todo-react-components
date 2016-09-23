@@ -28,8 +28,21 @@ npm install todo-react-components --save
 
 Or download the latest build of [todo-react-components.js](build/todo-react-components.js).
 
-### Conventions Used
+### Demo App
 
+This project comes with a demo app. To run it, clone the project, start the webserver and navigate to the url:
+
+```
+git clone https://github.com/thinkloop/todo-react-components
+
+npm start
+
+// navigate to url
+```
+Or simply download the [build_demo](build_demo) folder and start a webserver at the root.
+
+### Design Conventions Used
+Conventions used to drive architecture and design of components:
 - pass in most data as props
 - use local state for temporary data, performance, throw-away data
 - develop component data interfaces as simply and minimaly as possible
@@ -39,11 +52,3 @@ Or download the latest build of [todo-react-components.js](build/todo-react-comp
 - destructure objects as you walk down the tree, passing in the simplest forms
 - pass in all strings/labels/text to allow for more flexible re-use
 
-### Demo App
-
-This project comes with a demo app. To run it, clone the project, start the web server and navigate to the url:
-
-```
-git clone https://github.com/thinkloop/todo-react-components
-npm start
-```
