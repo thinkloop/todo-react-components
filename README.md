@@ -25,9 +25,10 @@ Using npm:
 npm install todo-react-components --save
 ```
 
-Or use the latest build of [todo-react-components.js](build/todo-react-components.js) in your project.
+Or download the latest build of [todo-react-components.js](build/todo-react-components.js).
 
-Then in your app `import` the project:
+### Use
+In your app `import` the project:
 
 ```javascript
 import { component, constants } from 'todo-react-components'; 
