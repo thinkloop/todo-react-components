@@ -46,7 +46,7 @@ var todoReactComponents  = require('todo-react-components');
 // render entire ui
 todoReactComponents.component(htmlElement, state);
 
-// dump constants object
+// dump available constants
 console.log(todoReactComponents.constants); 
 ```
 
