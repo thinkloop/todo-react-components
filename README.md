@@ -34,7 +34,7 @@ import { component, constants } from 'todo-react-components';
 // render entire ui
 component(htmlElement, state);
 
-// dump constants object
+// dump available constants
 console.log(constants);
 ```
 
