@@ -2,19 +2,17 @@
 
 This is 1 of 3 projects that make up the [advanced todo app](https://github.com/thinkloop/todo-app). It provides the view-layer of the app in the form of react components, and nothing else. It exports a single top-level react component that renders the entire ui using provided state. While this project is implemented by the advanced todo app, it is not aware of it, nor dependent on it or any other app. It was designed and developed in isolation as a stand-alone system, with a generalized interface, so that it can remain completely decoupled and be implemented by any app.
 
-Example implementation:
+Example 3rd party app importing this project and rendering the full ui:
 
 ```javascript
-/* 
-* 3rd party app imports this project and renders the full ui
-*/
-
+// import this project
 import { component } from 'todo-react-components'; 
 
 const domElement = document.getElementById('app');
 const state = {};
 
-component(domElement, state); // render entire view
+// render ui
+component(domElement, state);
 
 ```
 
