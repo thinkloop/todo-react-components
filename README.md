@@ -11,7 +11,7 @@ npm install todo-react-components --save
 
 Or download the latest build of [todo-react-components.js](build/todo-react-components.js).
 
-### Usage
+### Use
 Example of a 3rd party app importing this project and rendering the full ui:
 
 ```javascript
