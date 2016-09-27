@@ -39,7 +39,7 @@ console.log(todoReactComponents.constants);
 
 ### Demo App
 
-The project comes with a demo app that showcases the ui. To run it, clone the project, start the webserver and navigate to the url:
+The project comes with a fully functional demo app that showcases the various parts of the ui. To run it, clone the project, start the webserver and navigate to the url:
 
 ```
 > git clone https://github.com/thinkloop/todo-react-components
