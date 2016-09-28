@@ -9,7 +9,7 @@ var _store2 = _interopRequireDefault(_store);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var appElement = document.getElementById('app');
+var htmlElement = document.getElementById('app');
 
 Object.defineProperty(window, 'state', { get: function get() {
     return _store2.default.getState();
@@ -17,7 +17,7 @@ Object.defineProperty(window, 'state', { get: function get() {
 console.log('********************************************* \n DEVELOPMENT MODE \n window.state available \n ********************************************* \n');
 
 _store2.default.subscribe(function () {
-  return (0, _todoReactComponents.component)(appElement, _store2.default.getState());
+  return (0, _todoReactComponents.component)(htmlElement, _store2.default.getState());
 });
 
 _store2.default.dispatch({ type: 'init' });
@@ -1507,7 +1507,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-exports.default = function (appElement, data) {
+exports.default = function (htmlElement, data) {
 	var page = void 0;
 
 	if (data.url !== window.location.pathname) {
@@ -1530,7 +1530,7 @@ exports.default = function (appElement, data) {
 			break;
 	}
 
-	(0, _reactDom.render)(page, appElement);
+	(0, _reactDom.render)(page, htmlElement);
 };
 
 var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
