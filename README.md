@@ -18,8 +18,8 @@ Example of a 3rd party app importing this project and rendering the full ui:
 // import this project
 import { component, constants } from 'todo-react-components'; 
 
-// render entire ui
-component(htmlElement, state);
+// render entire ui with no data
+component(htmlElement, {});
 
 // dump available constants
 console.log(constants);
@@ -30,11 +30,55 @@ or `require` it:
 ```javascript
 var todoReactComponents  = require('todo-react-components');
 
-// render entire ui
-todoReactComponents.component(htmlElement, state);
+// render entire ui with no data
+todoReactComponents.component(htmlElement, {});
 
 // dump available constants
 console.log(todoReactComponents.constants); 
+```
+
+### Data
+The view takes as input a `data` object of a certain structure and shape, that contains all the data necessary to render the view. The `data` required for this app looks something like this:
+
+```json
+{  
+  "selectedPage":"HOME",
+  "url":"/",
+  "siteHeader":{  
+    "labelHome":"Todo App",
+    "labelAbout":"About",
+    "hrefHome":"/",
+    "hrefAbout":"/about",
+    "selectedPage":"HOME"
+  },
+  "todos":{  
+    "newForm":{  
+      "placeholder":"What do you need to do?"
+    },
+    "list":[  
+      {  
+        "description":"Buy tomatoes from grocery store",
+        "dateCreated":"2016-09-19T18:44:15.635",
+        "isComplete":false,
+        "id":"10",
+        "buttonLabel":"delete"
+      },
+      {  
+        "description":"Finish writing blog post",
+        "dateCreated":"2016-09-20T18:44:18.635",
+        "isComplete":false,
+        "id":"3",
+        "buttonLabel":"delete"
+      }
+    ],
+    "summary":{  
+      "countIncomplete":"2 pending",
+      "countComplete":"0 complete",
+      "countTotal":"2 total",
+      "selectedSummaryStatus":"TOTAL"
+    }
+  }
+}
 ```
 
 ### Demo App
