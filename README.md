@@ -38,7 +38,7 @@ console.log(todoReactComponents.constants);
 ```
 
 ### Data
-The view takes as input a `data` object of a certain structure and shape, that contains all the data necessary to render the view. The `data` required for this app looks something like this:
+The view takes as input a generic `data` object of a certain structure and shape. It contains all the data necessary to render the view. The `data` for this app looks something like:
 
 ```json
 {  
