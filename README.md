@@ -1,22 +1,6 @@
 # Todo App: View (React Components)
 
-This is 1 of 3 projects that make up the [advanced todo app](https://github.com/thinkloop/todo-app). It provides the view-layer of the app in the form of react components, and nothing else. It exports a single top-level react component that renders the entire ui using provided state. While this project is implemented by the advanced todo app, it is not aware of it, nor dependent on it or any other app. It was designed and developed in isolation as a stand-alone system, with a generalized interface, so that it can be implemented by any app, while remaining completely decoupled.
-
-Example implementation:
-
-```javascript
-/* 
-* 3rd party app imports this project and renders the full ui
-*/
-
-import { component } from 'todo-react-components'; 
-
-const domElement = document.getElementById('app');
-const state = {};
-
-component(domElement, state); // render entire view
-
-```
+This is 1 of 3 projects that make up the [advanced todo app](https://github.com/thinkloop/todo-app). It provides the view-layer of the app in the form of react components, and nothing else. It exports a single top-level react component that renders the entire ui using provided state. While this project is implemented by the advanced todo app, it is not aware of it, nor dependent on it or any other app. It was designed and developed in isolation as a stand-alone system, with a generalized interface, so that it can remain completely decoupled from any app.
 
 ### Install
 Using npm:
@@ -27,34 +11,80 @@ npm install todo-react-components --save
 
 Or download the latest build of [todo-react-components.js](build/todo-react-components.js).
 
-### Usage
-`import` the project:
+### Use
+Example of a 3rd party app importing this project and rendering the full ui:
 
 ```javascript
+// import this project
 import { component, constants } from 'todo-react-components'; 
 
-// render entire ui
-component(htmlElement, state);
+// render entire ui with no data
+component(htmlElement, {});
 
-// dump constants object
+// dump available constants
 console.log(constants);
 ```
 
 or `require` it:
 
 ```javascript
+// require this project
 var todoReactComponents  = require('todo-react-components');
 
-// render entire ui
-todoReactComponents.component(htmlElement, state);
+// render entire ui with no data
+todoReactComponents.component(htmlElement, {});
 
-// dump constants object
+// dump available constants
 console.log(todoReactComponents.constants); 
+```
+
+### Data
+The view takes as input a generic `data` object of a certain structure and shape. It contains all the data necessary to render the view. The `data` for this view requires looks something like:
+
+```json
+{  
+  "selectedPage":"HOME",
+  "url":"/",
+  "siteHeader":{  
+    "labelHome":"Todo App",
+    "labelAbout":"About",
+    "hrefHome":"/",
+    "hrefAbout":"/about",
+    "selectedPage":"HOME"
+  },
+  "todos":{  
+    "newForm":{  
+      "placeholder":"What do you need to do?"
+    },
+    "list":[  
+      {  
+        "description":"Buy tomatoes from grocery store",
+        "dateCreated":"2016-09-19T18:44:15.635",
+        "isComplete":false,
+        "id":"10",
+        "buttonLabel":"delete"
+      },
+      {  
+        "description":"Finish writing blog post",
+        "dateCreated":"2016-09-20T18:44:18.635",
+        "isComplete":false,
+        "id":"3",
+        "buttonLabel":"delete"
+      }
+    ],
+    "summary":{  
+      "countIncomplete":"2 pending",
+      "countComplete":"0 complete",
+      "countTotal":"2 total",
+      "selectedSummaryStatus":"TOTAL"
+    }
+  }
+}
 ```
 
 ### Demo App
 
-The project comes with a demo app that showcases the ui. To run it, clone the project, start the webserver and navigate to the url:
+This project comes with a fully functional demo app that showcases the various parts of the ui. To run it, clone the project, start the webserver and navigate to the url:
 
 ```
 > git clone https://github.com/thinkloop/todo-react-components
