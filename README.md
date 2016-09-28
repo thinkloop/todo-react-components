@@ -28,6 +28,7 @@ console.log(constants);
 or `require` it:
 
 ```javascript
+// require this project
 var todoReactComponents  = require('todo-react-components');
 
 // render entire ui with no data
