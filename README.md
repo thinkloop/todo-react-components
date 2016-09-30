@@ -8,7 +8,7 @@ This is 1 of 3 projects that make up the [advanced todo app](https://github.com/
 Using npm:
 
 ```
-npm install todo-react-components --save
+npm install 'thinkloop/todo-react-components' --save
 ```
 
 Or download the latest build of [todo-react-components.js](build/todo-react-components.js).
