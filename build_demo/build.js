@@ -1657,11 +1657,7 @@ var constants = {
 
 exports.default = {
 	component: _component2.default,
-
-	constants: {
-		PAGES: PAGES,
-		TODO_STATUSES: TODO_STATUSES
-	}
+	constants: constants
 };
 exports.component = _component2.default;
 exports.constants = constants;

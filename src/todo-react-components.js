@@ -10,11 +10,7 @@ const constants = {
 
 export default {
 	component,
-
-	constants: {
-		PAGES,
-		TODO_STATUSES
-	}
+	constants
 };
 
 export {
