@@ -17,7 +17,7 @@ Object.defineProperty(window, 'state', { get: function get() {
 console.log('********************************************* \n DEVELOPMENT MODE \n window.state available \n ********************************************* \n');
 
 _store2.default.subscribe(function () {
-  return (0, _todoReactComponents.component)(_store2.default.getState(), domElement);
+  return (0, _todoReactComponents.render)(_store2.default.getState(), domElement);
 });
 
 _store2.default.dispatch({ type: 'init' });
@@ -1632,7 +1632,7 @@ exports.default = SiteHeader;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.constants = exports.component = undefined;
+exports.constants = exports.render = undefined;
 
 var _component = require('./component');
 
@@ -1656,10 +1656,10 @@ var constants = {
 };
 
 exports.default = {
-	component: _component2.default,
+	render: _component2.default,
 	constants: constants
 };
-exports.component = _component2.default;
+exports.render = _component2.default;
 exports.constants = constants;
 
 },{"./component":26,"./site/constants/pages":27,"./todos/constants/statuses":30}],30:[function(require,module,exports){

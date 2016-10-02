@@ -1,4 +1,4 @@
-import component from './component';
+import render from './component';
 import * as PAGES from './site/constants/pages';
 import * as TODO_STATUSES from './todos/constants/statuses';
 
@@ -9,11 +9,11 @@ const constants = {
 
 
 export default {
-	component,
+	render,
 	constants
 };
 
 export {
-	component,
+	render,
 	constants
 };
