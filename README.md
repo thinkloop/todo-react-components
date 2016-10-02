@@ -18,10 +18,10 @@ Example of a 3rd party app importing this project and rendering the full ui:
 
 ```javascript
 // import this project
-import { component, constants } from 'todo-react-components'; 
+import { render, constants } from 'todo-react-components';
 
 // render entire ui with no data
-component(htmlElement, {});
+render({}, domElement);
 
 // dump available constants
 console.log(constants);
@@ -34,39 +34,39 @@ or `require` it:
 var todoReactComponents  = require('todo-react-components');
 
 // render entire ui with no data
-todoReactComponents.component(htmlElement, {});
+todoReactComponents.render({}, domElement);
 
 // dump available constants
-console.log(todoReactComponents.constants); 
+console.log(todoReactComponents.constants);
 ```
 
 ### Data
 The view takes as input a generic `data` object of a certain structure and shape. It contains all the data necessary to render the view. The `data` for this view requires looks something like:
 
 ```json
-{  
+{
   "selectedPage":"HOME",
   "url":"/",
-  "siteHeader":{  
+  "siteHeader":{
     "labelHome":"Todo App",
     "labelAbout":"About",
     "hrefHome":"/",
     "hrefAbout":"/about",
     "selectedPage":"HOME"
   },
-  "todos":{  
-    "newForm":{  
+  "todos":{
+    "newForm":{
       "placeholder":"What do you need to do?"
     },
-    "list":[  
-      {  
+    "list":[
+      {
         "description":"Buy tomatoes from grocery store",
         "dateCreated":"2016-09-19T18:44:15.635",
         "isComplete":false,
         "id":"10",
         "buttonLabel":"delete"
       },
-      {  
+      {
         "description":"Finish writing blog post",
         "dateCreated":"2016-09-20T18:44:18.635",
         "isComplete":false,
@@ -74,7 +74,7 @@ The view takes as input a generic `data` object of a certain structure and shape
         "buttonLabel":"delete"
       }
     ],
-    "summary":{  
+    "summary":{
       "countIncomplete":"2 pending",
       "countComplete":"0 complete",
       "countTotal":"2 total",

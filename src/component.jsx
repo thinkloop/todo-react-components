@@ -6,7 +6,7 @@ import { HOME, ABOUT } from './site/constants/pages';
 import TodosPage from './todos/todos-page';
 import AboutPage from './about/about-page';
 
-export default function (htmlElement, data) {
+export default function (data, domElement) {
 	let page;
 
 	if (data.url !== window.location.pathname) {
@@ -29,6 +29,6 @@ export default function (htmlElement, data) {
 		break;
 	}
 
-	render(page, htmlElement);
+	render(page, domElement);
 }
 
