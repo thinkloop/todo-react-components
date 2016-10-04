@@ -17,9 +17,9 @@ const AboutPage = (p) => (
 			</p>
 
 			<ul>
-				<li><a href="https://github.com/thinkloop/todo-app"><strong>integration</strong>: selectors</a></li>
-				<li><a href="https://github.com/thinkloop/todo-react-components"><strong>view</strong>: react components</a></li>
-				<li><a href="https://github.com/thinkloop/todo-redux-state"><strong>state</strong>: redux container</a></li>
+				<li><a href="https://github.com/thinkloop/todo-app" target="_blank"><strong>integration</strong>: selectors</a></li>
+				<li><a href="https://github.com/thinkloop/todo-react-components" target="_blank"><strong>view</strong>: react components</a></li>
+				<li><a href="https://github.com/thinkloop/todo-redux-state" target="_blank"><strong>state</strong>: redux container</a></li>
 			</ul>
 		</main>
 	</div>
