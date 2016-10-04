@@ -18,10 +18,8 @@ const AboutPage = (p) => (
 
 			<ul>
 				<li><a href="https://github.com/thinkloop/todo-app"><strong>integration</strong>: selectors</a></li>
-				<ul>
-					<li><a href="https://github.com/thinkloop/todo-react-components"><strong>view</strong>: react components</a></li>
-					<li><a href="https://github.com/thinkloop/todo-redux-state"><strong>state</strong>: redux container</a></li>
-				</ul>
+				<li><a href="https://github.com/thinkloop/todo-react-components"><strong>view</strong>: react components</a></li>
+				<li><a href="https://github.com/thinkloop/todo-redux-state"><strong>state</strong>: redux container</a></li>
 			</ul>
 		</main>
 	</div>
