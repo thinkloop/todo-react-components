@@ -1412,7 +1412,12 @@ var AboutPage = function AboutPage(p) {
 		_react2.default.createElement(
 			'main',
 			{ className: (0, _classnames2.default)('page', p.className) },
-			'About Page'
+			'See the article for more details: ',
+			_react2.default.createElement(
+				'a',
+				{ href: 'http://www.thinkloop.com/article/extreme-decoupling-react-redux-selectors', target: '_blank' },
+				'Extreme Decoupling React Redux Selectors'
+			)
 		)
 	);
 };
@@ -1634,9 +1639,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.constants = exports.render = undefined;
 
-var _component = require('./component');
+var _render = require('./render');
 
-var _component2 = _interopRequireDefault(_component);
+var _render2 = _interopRequireDefault(_render);
 
 var _pages = require('./site/constants/pages');
 
@@ -1656,13 +1661,13 @@ var constants = {
 };
 
 exports.default = {
-	render: _component2.default,
+	render: _render2.default,
 	constants: constants
 };
-exports.render = _component2.default;
+exports.render = _render2.default;
 exports.constants = constants;
 
-},{"./component":26,"./site/constants/pages":27,"./todos/constants/statuses":30}],30:[function(require,module,exports){
+},{"./render":26,"./site/constants/pages":27,"./todos/constants/statuses":30}],30:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

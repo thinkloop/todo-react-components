@@ -1,4 +1,4 @@
-import render from './component';
+import render from './render';
 import * as PAGES from './site/constants/pages';
 import * as TODO_STATUSES from './todos/constants/statuses';
 

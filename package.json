@@ -51,7 +51,7 @@
     "browserify": "13.1.0",
     "derequire": "^2.0.3",
     "exorcist": "^0.4.0",
-    "npm-check-updates": "^2.8.0",
+    "npm-check-updates": "^2.8.2",
     "onchange": "^3.0.2",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",

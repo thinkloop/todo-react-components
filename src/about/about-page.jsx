@@ -8,7 +8,7 @@ const AboutPage = (p) => (
 		<SiteHeader { ...p.siteHeader } />
 
 		<main className={ classnames('page', p.className) }>
-			About Page
+			See the article for more details: <a href="http://www.thinkloop.com/article/extreme-decoupling-react-redux-selectors" target="_blank">Extreme Decoupling React Redux Selectors</a>
 		</main>
 	</div>
 );
