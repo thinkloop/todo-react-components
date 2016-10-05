@@ -9,7 +9,7 @@ const AboutPage = (p) => (
 
 		<main className={ classnames('page', p.className) }>
 			<p>
-				Read the article for more details: <a href="http://www.thinkloop.com/article/extreme-decoupling-react-redux-selectors" target="_blank">Extreme Decoupling React Redux Selectors</a>
+				Read the article: <a href="http://www.thinkloop.com/article/extreme-decoupling-react-redux-selectors" target="_blank">Extreme Decoupling React Redux Selectors</a>
 			</p>
 
 			<p>
