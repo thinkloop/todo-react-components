@@ -107,7 +107,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function () {
-	var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _pages.HOME;
+	var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/';
 	var action = arguments[1];
 
 	switch (action.type) {
@@ -1412,11 +1412,66 @@ var AboutPage = function AboutPage(p) {
 		_react2.default.createElement(
 			'main',
 			{ className: (0, _classnames2.default)('page', p.className) },
-			'See the article for more details: ',
 			_react2.default.createElement(
-				'a',
-				{ href: 'http://www.thinkloop.com/article/extreme-decoupling-react-redux-selectors', target: '_blank' },
-				'Extreme Decoupling React Redux Selectors'
+				'p',
+				null,
+				'Read the article: ',
+				_react2.default.createElement(
+					'a',
+					{ href: 'http://www.thinkloop.com/article/extreme-decoupling-react-redux-selectors', target: '_blank' },
+					'Extreme Decoupling React Redux Selectors'
+				)
+			),
+			_react2.default.createElement(
+				'p',
+				null,
+				'See the code on github:'
+			),
+			_react2.default.createElement(
+				'ul',
+				null,
+				_react2.default.createElement(
+					'li',
+					null,
+					_react2.default.createElement(
+						'a',
+						{ href: 'https://github.com/thinkloop/todo-app', target: '_blank' },
+						_react2.default.createElement(
+							'strong',
+							null,
+							'integration'
+						),
+						': selectors'
+					)
+				),
+				_react2.default.createElement(
+					'li',
+					null,
+					_react2.default.createElement(
+						'a',
+						{ href: 'https://github.com/thinkloop/todo-react-components', target: '_blank' },
+						_react2.default.createElement(
+							'strong',
+							null,
+							'view'
+						),
+						': react components'
+					)
+				),
+				_react2.default.createElement(
+					'li',
+					null,
+					_react2.default.createElement(
+						'a',
+						{ href: 'https://github.com/thinkloop/todo-redux-state', target: '_blank' },
+						_react2.default.createElement(
+							'strong',
+							null,
+							'state'
+						),
+						': redux container'
+					)
+				)
 			)
 		)
 	);
@@ -1515,7 +1570,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 exports.default = function (data, domElement) {
 	var page = void 0;
 
-	if (data.url !== window.location.pathname) {
+	if (data.url !== window.location.pathname + window.location.search) {
 		window.history.pushState(null, null, data.url);
 	}
 

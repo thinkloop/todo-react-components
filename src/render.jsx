@@ -9,7 +9,7 @@ import AboutPage from './about/about-page';
 export default function (data, domElement) {
 	let page;
 
-	if (data.url !== window.location.pathname) {
+	if (data.url !== window.location.pathname + window.location.search) {
 		window.history.pushState(null, null, data.url);
 	}
 
