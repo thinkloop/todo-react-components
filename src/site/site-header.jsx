@@ -8,8 +8,8 @@ import Link from 'link-react';
 const SiteHeader = (p) => (
 	<header className={ classnames('site-header', p.className) }>
 		<nav>
-			<Link className={ classnames({ selected: p.selectedPage === HOME }) } href={ p.hrefHome } onClick={ p.onClickHome }>{ p.labelHome }</Link>
-			<Link className={ classnames({ selected: p.selectedPage === ABOUT }) } href={ p.hrefAbout } onClick={ p.onClickAbout }>{ p.labelAbout }</Link>
+			<Link className={ classnames({ selected: p.selectedPage === HOME }) } href={ p.homeLink.href } onClick={ p.homeLink.onClick }>{ p.homeLink.label }</Link>
+			<Link className={ classnames({ selected: p.selectedPage === ABOUT }) } href={ p.aboutLink.href } onClick={ p.aboutLink.onClick }>{ p.aboutLink.label }</Link>
 		</nav>
 	</header>
 );
@@ -18,15 +18,8 @@ SiteHeader.propTypes = {
 	className: React.PropTypes.string,
 
 	selectedPage: React.PropTypes.string,
-
-	labelHome: React.PropTypes.string,
-	labelAbout: React.PropTypes.string,
-
-	hrefHome: React.PropTypes.string,
-	hrefAbout: React.PropTypes.string,
-
-	onClickHome: React.PropTypes.func,
-	onClickAbout: React.PropTypes.func
+	homeLink: React.PropTypes.object,
+	aboutLink: React.PropTypes.object
 };
 
 export default SiteHeader;

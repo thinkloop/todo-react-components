@@ -5,16 +5,19 @@ import store from '../../store';
 import { HOME, ABOUT } from '../../../src/site/constants/pages';
 
 const defaultState = {
-	labelHome: 'Todo App',
-	labelAbout: 'About',
-
-	hrefHome: '/',
-	hrefAbout: '/about',
-
 	selectedPage: '/',
 
-	onClickHome: () => store.dispatch({ type: ON_CLICK_NAV, selectedPage: HOME }),
-	onClickAbout: () => store.dispatch({ type: ON_CLICK_NAV, selectedPage: ABOUT })
+	homeLink: {
+		label: 'Todo App',
+		href: '/',
+		onClick: () => store.dispatch({ type: ON_CLICK_NAV, selectedPage: HOME })
+	},
+
+	aboutLink: {
+		label: 'About',
+		href: '/about',
+		onClick: () => store.dispatch({ type: ON_CLICK_NAV, selectedPage: ABOUT })
+	}
 };
 
 export default function (siteHeader = defaultState, action) {
