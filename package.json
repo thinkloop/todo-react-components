@@ -7,7 +7,7 @@
     "************": "",
     "start": "augur-ui-webserver -d $npm_package_config_demo_build_folder",
     "watch": "clear; echo '* NPM UPDATE *'; npm update; echo '* CLEAN * HTML * WATCHIFY *'; NODE_ENV=development npm run -s watch:all",
-    "build": "clear; echo '* NPM UPDATE *'; npm update; echo '* * * *  * BUILD  * * * * *'; NODE_ENV=production npm run -s build:all",
+    "build": "clear; echo '* * * *  * BUILD  * * * * *'; NODE_ENV=production npm run -s build:all",
     "***********": "",
     "watch:all": "npm run -s clean:demo && (npm run -s watch:js & npm run -s watch:html)",
     "watch:js": "watchify $npm_package_config_demo_js_entry_file --extension=.js --extension=.jsx -t [ babelify ] --debug -o 'exorcist $npm_package_config_demo_build_folder/build.js.map > $npm_package_config_demo_build_folder/build.js && echo ---------WATCHIFY--------`date +%r`'",
@@ -39,8 +39,9 @@
   },
   "homepage": "https://github.com/thinkloop/todo-react-components#readme",
   "dependencies": {
+    "browserify-shim": "^3.8.12",
     "classnames": "2.2.5",
-    "browserify-shim": "^3.8.12"
+    "link-react": "thinkloop/link-react"
   },
   "devDependencies": {
     "augur-ui-webserver": "^1.1.0",
@@ -51,7 +52,6 @@
     "browserify": "13.1.0",
     "derequire": "^2.0.3",
     "exorcist": "^0.4.0",
-    "npm-check-updates": "^2.8.2",
     "onchange": "^3.0.2",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",

@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import { HOME, ABOUT } from '../site/constants/pages';
 
-import Link from '../common/link';
+import Link from 'link-react';
 
 const SiteHeader = (p) => (
 	<header className={ classnames('site-header', p.className) }>

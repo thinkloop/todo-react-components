@@ -192,7 +192,7 @@ exports.default = (0, _redux.createStore)((0, _redux.combineReducers)(reducers),
 
 }).call(this,require('_process'))
 
-},{"./site/reducers/selected-page":2,"./site/reducers/site-header":3,"./site/reducers/url":4,"./todos/reducers/todos":6,"_process":7,"redux":15,"redux-thunk":9}],6:[function(require,module,exports){
+},{"./site/reducers/selected-page":2,"./site/reducers/site-header":3,"./site/reducers/url":4,"./todos/reducers/todos":6,"_process":7,"redux":16,"redux-thunk":10}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -552,6 +552,45 @@ process.umask = function() { return 0; };
 }());
 
 },{}],9:[function(require,module,exports){
+module.exports = React.createClass({
+	propTypes: {
+		className: React.PropTypes.string,
+		href: React.PropTypes.string,
+		target: React.PropTypes.string,
+		onClick: React.PropTypes.func
+	},
+
+	handleClick: function(e) {
+
+		// if target is set (e.g. to "_blank"), let the browser handle it
+		if (this.props.target || (this.props.href && this.props.href.indexOf('mailto:') === 0)) {
+			return;
+		}
+
+		// if keyboard click, or not a left click, let the browser handle it
+		if (!e.button === 0 || e.metaKey || e.altKey || e.ctrlKey || e.shiftKey) {
+			return;
+		}
+
+		// otherwise intercept the browser
+		e.preventDefault();
+
+		// if a handler was provided, run it
+		if (this.props.onClick) {
+			this.props.onClick(this.props.href);
+		}
+	},
+
+	render: function() {
+		return React.createElement('a', Object.assign({}, this.props, {
+			href: this.props.href,
+			className: 'link ' + this.props.className,
+			onClick: this.handleClick
+		}));
+	}
+});
+
+},{}],10:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -575,7 +614,7 @@ var thunk = createThunkMiddleware();
 thunk.withExtraArgument = createThunkMiddleware;
 
 exports['default'] = thunk;
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -634,7 +673,7 @@ function applyMiddleware() {
     };
   };
 }
-},{"./compose":13}],11:[function(require,module,exports){
+},{"./compose":14}],12:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -686,7 +725,7 @@ function bindActionCreators(actionCreators, dispatch) {
   }
   return boundActionCreators;
 }
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -829,7 +868,7 @@ function combineReducers(reducers) {
     return hasChanged ? nextState : state;
   };
 }
-},{"./createStore":14,"./utils/warning":16,"lodash/isPlainObject":20}],13:[function(require,module,exports){
+},{"./createStore":15,"./utils/warning":17,"lodash/isPlainObject":21}],14:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -868,7 +907,7 @@ function compose() {
     }, last.apply(undefined, arguments));
   };
 }
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1130,7 +1169,7 @@ function createStore(reducer, preloadedState, enhancer) {
     replaceReducer: replaceReducer
   }, _ref2[_symbolObservable2['default']] = observable, _ref2;
 }
-},{"lodash/isPlainObject":20,"symbol-observable":21}],15:[function(require,module,exports){
+},{"lodash/isPlainObject":21,"symbol-observable":22}],16:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1177,7 +1216,7 @@ exports.combineReducers = _combineReducers2['default'];
 exports.bindActionCreators = _bindActionCreators2['default'];
 exports.applyMiddleware = _applyMiddleware2['default'];
 exports.compose = _compose2['default'];
-},{"./applyMiddleware":10,"./bindActionCreators":11,"./combineReducers":12,"./compose":13,"./createStore":14,"./utils/warning":16}],16:[function(require,module,exports){
+},{"./applyMiddleware":11,"./bindActionCreators":12,"./combineReducers":13,"./compose":14,"./createStore":15,"./utils/warning":17}],17:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1203,7 +1242,7 @@ function warning(message) {
   } catch (e) {}
   /* eslint-enable no-empty */
 }
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 var overArg = require('./_overArg');
 
 /** Built-in value references. */
@@ -1211,7 +1250,7 @@ var getPrototype = overArg(Object.getPrototypeOf, Object);
 
 module.exports = getPrototype;
 
-},{"./_overArg":18}],18:[function(require,module,exports){
+},{"./_overArg":19}],19:[function(require,module,exports){
 /**
  * Creates a unary function that invokes `func` with its argument transformed.
  *
@@ -1228,7 +1267,7 @@ function overArg(func, transform) {
 
 module.exports = overArg;
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 /**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
  * and has a `typeof` result of "object".
@@ -1259,7 +1298,7 @@ function isObjectLike(value) {
 
 module.exports = isObjectLike;
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 var getPrototype = require('./_getPrototype'),
     isObjectLike = require('./isObjectLike');
 
@@ -1329,15 +1368,15 @@ function isPlainObject(value) {
 
 module.exports = isPlainObject;
 
-},{"./_getPrototype":17,"./isObjectLike":19}],21:[function(require,module,exports){
+},{"./_getPrototype":18,"./isObjectLike":20}],22:[function(require,module,exports){
 module.exports = require('./lib/index');
 
-},{"./lib/index":22}],22:[function(require,module,exports){
+},{"./lib/index":23}],23:[function(require,module,exports){
 (function (global){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _ponyfill = require('./ponyfill');
@@ -1346,19 +1385,24 @@ var _ponyfill2 = _interopRequireDefault(_ponyfill);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var root = undefined; /* global window */
+var root = module; /* global window */
 
-if (typeof global !== 'undefined') {
-	root = global;
+
+if (typeof self !== 'undefined') {
+  root = self;
 } else if (typeof window !== 'undefined') {
-	root = window;
+  root = window;
+} else if (typeof global !== 'undefined') {
+  root = global;
+} else {
+  root = Function('return this')();
 }
 
 var result = (0, _ponyfill2['default'])(root);
 exports['default'] = result;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./ponyfill":23}],23:[function(require,module,exports){
+},{"./ponyfill":24}],24:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1382,7 +1426,7 @@ function symbolObservablePonyfill(root) {
 
 	return result;
 };
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1486,78 +1530,7 @@ exports.default = AboutPage;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../site/site-header":28,"classnames":8}],25:[function(require,module,exports){
-(function (global){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Link = function (_Component) {
-	_inherits(Link, _Component);
-
-	function Link(props) {
-		_classCallCheck(this, Link);
-
-		var _this = _possibleConstructorReturn(this, (Link.__proto__ || Object.getPrototypeOf(Link)).call(this, props));
-
-		_this.handleClick = function (e) {
-			// if target is set (e.g. to "_blank"), let the browser handle it
-			if (_this.props.target || _this.props.href && _this.props.href.indexOf('mailto:') === 0) {
-				return;
-			}
-			// if not a left click or is a special click, let the browser handle it
-			if (!e.button === 0 || e.metaKey || e.altKey || e.ctrlKey || e.shiftKey) {
-				return;
-			}
-			e.preventDefault();
-			if (_this.props.onClick) {
-				_this.props.onClick(_this.props.href);
-			}
-		};
-
-		_this.handleClick = _this.handleClick.bind(_this);
-		return _this;
-	}
-
-	_createClass(Link, [{
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement('a', _extends({}, this.props, { href: this.props.href, className: 'link ' + this.props.className, onClick: this.handleClick }));
-		}
-	}]);
-
-	return Link;
-}(_react.Component);
-
-Link.propTypes = {
-	className: _react.PropTypes.string,
-	href: _react.PropTypes.string,
-	target: _react.PropTypes.string,
-	onClick: _react.PropTypes.func
-};
-exports.default = Link;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-
-},{}],26:[function(require,module,exports){
+},{"../site/site-header":28,"classnames":8}],26:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1613,7 +1586,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./about/about-page":24,"./site/constants/pages":27,"./todos/todos-page":34}],27:[function(require,module,exports){
+},{"./about/about-page":25,"./site/constants/pages":27,"./todos/todos-page":34}],27:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1640,9 +1613,9 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 var _pages = require('../site/constants/pages');
 
-var _link = require('../common/link');
+var _linkReact = require('link-react');
 
-var _link2 = _interopRequireDefault(_link);
+var _linkReact2 = _interopRequireDefault(_linkReact);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1654,12 +1627,12 @@ var SiteHeader = function SiteHeader(p) {
 			'nav',
 			null,
 			_react2.default.createElement(
-				_link2.default,
+				_linkReact2.default,
 				{ className: (0, _classnames2.default)({ selected: p.selectedPage === _pages.HOME }), href: p.hrefHome, onClick: p.onClickHome },
 				p.labelHome
 			),
 			_react2.default.createElement(
-				_link2.default,
+				_linkReact2.default,
 				{ className: (0, _classnames2.default)({ selected: p.selectedPage === _pages.ABOUT }), href: p.hrefAbout, onClick: p.onClickAbout },
 				p.labelAbout
 			)
@@ -1686,7 +1659,7 @@ exports.default = SiteHeader;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../common/link":25,"../site/constants/pages":27,"classnames":8}],29:[function(require,module,exports){
+},{"../site/constants/pages":27,"classnames":8,"link-react":9}],29:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
