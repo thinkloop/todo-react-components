@@ -1,7 +1,7 @@
 {
   "name": "todo-react-components",
   "version": "1.0.0",
-  "description": "React components for advanced Todo App",
+  "description": "React components for extreme decoupling todo app example",
   "main": "./build/todo-react-components.js",
   "repository": {
     "type": "git",
