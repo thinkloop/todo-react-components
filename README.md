@@ -5,7 +5,7 @@ React, Redux, Selectors ](http://www.thinkloop.com/article/extreme-decoupling-re
 
 This is 1 of 3 projects that make up the [advanced todo app](https://github.com/thinkloop/todo-app). It provides the view-layer of the app in the form of react components, and nothing else. It exports a single top-level react component that renders the entire ui using provided state. While this project is implemented by the advanced todo app, it is not aware of it, nor dependent on it or any other app. It was designed and developed in isolation as a stand-alone system, with a generalized interface, so that it can remain completely decoupled from any app.
 
-### Install
+## Install
 Using npm:
 
 ```
@@ -14,7 +14,7 @@ npm install 'thinkloop/todo-react-components' --save
 
 Or download the latest build of [todo-react-components.js](build/todo-react-components.js).
 
-### Use
+## Use
 Example of a 3rd party app importing this project and rendering the full ui:
 
 ```javascript
@@ -41,7 +41,7 @@ todoReactComponents.render({}, domElement);
 console.log(todoReactComponents.constants);
 ```
 
-### Data
+## Data
 The view takes as input a generic `data` object of a certain structure and shape. It contains all the data necessary to render the view. The `data` for this view requires looks something like:
 
 ```json
@@ -85,7 +85,7 @@ The view takes as input a generic `data` object of a certain structure and shape
 }
 ```
 
-### Demo App
+## Demo App
 
 This project comes with a fully functional demo app that showcases the various parts of the ui. To run it, clone the project, start the webserver and navigate to the url:
 
@@ -97,7 +97,7 @@ This project comes with a fully functional demo app that showcases the various p
 ```
 Or download the [build_demo](build_demo) folder and start your own webserver in its root.
 
-### Conventions Used
+## Conventions Used
 Following are some of the conventions used to drive architectural and design choices:
 - pass in data as props
 - only use local state for: forms, performance, temporary data, or special circumstances
@@ -110,13 +110,13 @@ Following are some of the conventions used to drive architectural and design cho
 - name things with as little specificity as possible
 - name things relative to ui elements not domain knowledge: `onClickButton` instead of `onClickAddTodo`
 
-### License
+## License
 
 Released under an MIT license.
 
-### Related
+## Related
 1. [todo-react-components](https://github.com/thinkloop/todo-react-components) (view-layer)
 2. [todo-redux-state](https://github.com/thinkloop/todo-redux-state) (data-layer)
 3. [todo-app](https://github.com/thinkloop/todo-app) (integration)
 
-### Like it? Star It
+## Like it? Star It
